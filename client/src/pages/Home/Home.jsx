@@ -1,10 +1,10 @@
 import React from 'react'
-import Team from '../Team01/Team01'
+
 import './Home.scss'
 function Home() {
   return (
     <div>
-      <div className='mainContainer'>
+      {/* <div className='mainContainer'>
         <div className='team'>
           <h3>Team 1</h3>
           <h1>0</h1>
@@ -45,7 +45,7 @@ function Home() {
           <h3>Team 10</h3>
           <h1>0</h1>
         </div>
-      </div>
+      </div> */}
     </div>
     
   )

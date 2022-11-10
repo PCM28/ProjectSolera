@@ -1,9 +1,19 @@
+.App{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+}
+
 .Head{
     display: flex;
     align-items: center;
     justify-items: center;
     justify-content: space-between;
-}
-.App{
-    background-color: grey;
+    h1{
+        padding: 0 300px 0 0;
+    }
+    img{
+        padding: 0 0 0 300px;
+    }
 }

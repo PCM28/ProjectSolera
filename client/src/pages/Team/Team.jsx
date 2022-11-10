@@ -1,5 +1,5 @@
 import React from 'react'
-import './Team01.scss'
+import './Team.scss'
 function Team() {
   return (
     <div className='Team'>
