@@ -1,0 +1,28 @@
+.mainContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    flex-wrap: wrap;
+
+    h3{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        text-decoration: none;
+    }
+    h1{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        text-decoration: none;
+    }
+}
+.team{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    padding: 0 40px;
+    
+}
