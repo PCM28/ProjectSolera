@@ -29,5 +29,17 @@
         margin: 0;
         border: 0;
     }
-    
+}
+
+.borderBlack {
+    border: 0.2em solid black;
+}
+
+.backgroundColor {
+    //background-color: rgb(63, 63, 63);
+    padding: 2em;
+}
+
+.whiteColor {
+    color: white;
 }
