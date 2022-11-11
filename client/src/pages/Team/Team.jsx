@@ -7,8 +7,10 @@ function Team(props) {
  
   return (
     <div className='teamCard'>
-      <h3 className='teamName'>{team}</h3>
-      <h3 className='points'>0</h3>
+      <div className='cardPosition'>
+        <h3 className='teamName'>{team}</h3>
+        <h3 className='points'>0</h3>
+      </div>
     </div>
   )
 }

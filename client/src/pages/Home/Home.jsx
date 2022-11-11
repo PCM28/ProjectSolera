@@ -19,9 +19,9 @@ function Home() {
       <div className='mainContainer'>
         <div className='container'>
            {teams.map((element)=>(
-            <Team
+              <Team
               team={element}
-            />
+             />
            ))}
         </div>
       </div>
