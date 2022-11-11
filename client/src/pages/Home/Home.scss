@@ -2,8 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    background: rgba(255, 255, 255, 0.5);
 
     h3{
         margin: 0;
@@ -29,22 +27,4 @@
     height: 450px;
     width: 1080px;
     padding: 30px;
-}
-.team{
-    display: flex;
-    align-items: center;
-    // justify-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    margin: 0 30px;
-    background-color: #fff;
-    width: 70px;
-    height: 80px;
-    border-radius: 4px;
-    h3{
-        margin: 0;
-        padding: 0;
-        border: 0;
-    }
 }
