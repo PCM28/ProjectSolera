@@ -1,17 +1,50 @@
-.mainContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.container{
+.MainContainer{
     display: flex;
     align-items: center;
     justify-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: rgba(20, 88, 216, 0.3);//0,6
+    text-decoration: none;
+}
+
+.linkTeamCard{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 20px;
+    margin: 40px;
+    background-color: #fff;
     border-radius: 4px;
-    height: 450px;
-    width: 1080px;
-    padding: 30px;
+    height: 150px;
+    width: 70px;
+    text-decoration: none;
+    
+    .teamName{
+        padding: 0;
+        margin: 0 0 10 0;
+        border: 0;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;//
+        font-size: 20px;
+        text-decoration: none;
+        color: #000;
+    }
+    .points{
+        padding: 0;
+        margin: 0;
+        border: 0;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;//
+        text-decoration: none;
+        color: #000;
+    }
+}
+.cardPosition{
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 0 20px 0;
 }
