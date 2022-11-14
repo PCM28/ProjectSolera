@@ -1,0 +1,35 @@
+.mainContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+}
+.title{
+    position: absolute;
+    padding: 0 0 400px 0;
+}
+.list{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 70px 0 0 0;
+    height: 400px;
+    width: 1080px;
+    overflow-y: scroll;
+    h3{
+        margin: 0;
+    }
+}
+.list::-webkit-scrollbar{
+    width: 0;
+}
+
+.left{
+    padding-right: 300px;
+}
+.right{
+    padding-left: 300px;
+}
