@@ -28,13 +28,13 @@ const PORT = process.env.PORT || 8000;
 //     console.log(`el servidor está reaaaady mann en http://localhost:${PORT}`);
 // })
 
-// app.get('/', (req, res)=>{
-//     res.end('Welcome to the server boss... running...');
-// })
+app.get('/', (req, res)=>{
+    res.end('Welcome to the server boss... running...');
+})
 
 app.use('/Activity', activitiesRoutes);
 
 app.listen(PORT,()=>{
     console.log(`db: ${process.env.DB_URL}`);
-    console.log(`Listening in http://localhost:${PORT}`);
+    console.log(`El servidor está reaaaady mann en http://localhost:${PORT}`);
 })

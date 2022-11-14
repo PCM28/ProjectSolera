@@ -17,18 +17,18 @@
     margin: 40px;
     background-color: #fff;
     border-radius: 4px;
-    height: 150px;
-    width: 70px;
+    height: 180px;
+    width: 90px;
     text-decoration: none;
     
     .teamName{
         padding: 0;
-        margin: 0 0 10 0;
+        margin: -4px 0px 20px 0px;
         border: 0;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;//
-        font-size: 20px;
+        font-size: 27px;
         text-decoration: none;
-        color: #000;
+        color: #310863;
     }
     .points{
         padding: 0;
@@ -36,7 +36,7 @@
         border: 0;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;//
         text-decoration: none;
-        color: #000;
+        color: #310863;
     }
 }
 .cardPosition{
@@ -48,3 +48,18 @@
     flex-direction: column;
     padding: 0 0 20px 0;
 }
+// Development
+.circular{
+    width: 85;
+    height: 85;
+}
+.trophys{
+    width: 30;
+    margin-top: -5;
+}
+.words{
+    font-size: 18;
+    margin-top: -5;
+    text-decoration: none;
+}
+// 
