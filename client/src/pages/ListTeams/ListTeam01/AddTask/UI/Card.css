@@ -1,0 +1,12 @@
+.card {
+    font: inherit;
+    display: block;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0,0.26);
+    padding: 20px;
+    margin: auto;
+    margin-top: 30px;
+    width: 33%;
+    height: auto;
+}
