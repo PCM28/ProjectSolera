@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Thats-all";
+  src: url("../../assets/fonts/ThatsFontFolks.ttf");
+}
+
+.image{
+  background-image: url(../../assets/images/psyduck.png);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  position: fixed;
+    bottom: 0px;
+    right: 0px;
+  border-radius: 4px;
+  height: 100%;
+  width: 100%;
+  background-size: 50%;
+}
+
+.notFound{
+  font-size: 500%;
+  margin-top: -10%;
+  margin-left: -50%;
+  color: #fff;
+  font-family: "Thats-all";
+}
