@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Activity = require('../../api/activities/activity.model');
+const Activity = require('../../api/activities/activities.model');
 const db = require("../database/database");
 const initialActivities = [
     {
