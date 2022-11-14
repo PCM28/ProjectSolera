@@ -7,19 +7,38 @@
     color: #fff;
 }
 .title{
-    position: absolute;
-    padding: 0 0 400px 0;
+    display: inline-flexbox;
+    flex-direction: row;
+    margin-top: 60px;
 }
-.list{
-    display: flex;
+.name{
+    display: inline;
     align-items: center;
     justify-items: center;
     justify-content: center;
-    flex-direction: row;
-    margin: 70px 0 0 0;
-    height: 400px;
-    width: 1080px;
+    h4{
+        justify-items: baseline;
+    }
+}
+.points{
+    margin-left: 300px;
+    display: inline;
+    justify-items: baseline;
+}
+.add{
+    margin-left: 130px;
+    display: inline;
+    justify-items: baseline;
+}
+.list{
+    display: inline-flexbox;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
     overflow-y: scroll;
+    padding-right: 100px;
+    padding-left: 100px;
     h3{
         margin: 0;
     }
@@ -28,9 +47,31 @@
     width: 0;
 }
 
-.left{
-    padding-right: 300px;
+.item{
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: row;
 }
-.right{
-    padding-left: 300px;
+.activity{
+    padding-right: 400px;
+    display:inline-flex;
+    color: white;
+}
+.point{
+    padding-right: 100px;
+    display:inline-flex;
+    color: white;
+    justify-items: baseline;
+}
+.delete{
+    padding-right: 10px;
+    display:inline-flex;
+    justify-items: baseline;
+
+}
+.edit{
+    display:inline-flex;
+    justify-items: baseline;
 }
