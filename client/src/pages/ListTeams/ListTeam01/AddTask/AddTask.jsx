@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from './UI/Button'
 import Card from './UI/Card'
 import './AddTask.scss'
-import alertLogo from './alertLogo.jpg';
+import alertLogo from '../../../../assets/images/alertLogo.jpg';
 
 function AddTask(props) {
 
@@ -30,13 +30,18 @@ function AddTask(props) {
     const addTaskHandler = (event) => {
         event.preventDefault();
 
-        if (enteredTask.trim().length === 0) {
+        if (enteredTask.trim().length === 0 && (enteredPoints.trim().length === 0 || +enteredPoints < 0)) {
+            setTaskIsValid(false);
+            setPointIsValid(false);
+            return;
+        } else if (enteredTask.trim().length === 0) {
             setTaskIsValid(false);
             return;
         } else if (enteredPoints.trim().length === 0 || +enteredPoints < 0) {
             setPointIsValid(false);
             return;
         }
+        props.onSave();
         // props.onAddTask(enteredTask, enteredPoints);
         // setEnteredTask('');
         // setEnteredPoints('');
@@ -44,7 +49,7 @@ function AddTask(props) {
 
     return (
         <div>
-            <div className="backdrop" onClick={props.onSave} ></div>
+            <div className="backdrop" ></div>
             <Card className="modal">
                 <header className="header">
                     <h2>{props.action} Task</h2>
@@ -72,7 +77,7 @@ function AddTask(props) {
                     </div>
                     <footer className="actions" name='Save'>
                         <Button key='1' type="submit">Save</Button>
-                        <Button key='2' type='cancel'>Discard</Button>
+                        <Button key='2' type='discard' onClick={props.onDiscard}>Discard</Button>
                     </footer>
                 </form>
             </Card>
