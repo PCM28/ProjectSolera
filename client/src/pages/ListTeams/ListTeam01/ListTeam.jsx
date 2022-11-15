@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./ListTeam.scss";
 import AddTask from "./AddTask/AddTask";
 import RemoveConfirm from "../RemoveConfirm/RemoveConfirm";
+import editLogo from "../../../assets/icons/edit-icon/edit96.png";
+import deleteLogo from "../../../assets/icons/delete-icon/del96.png";
+import addLogo from "../../../assets/icons/add-icon/add96.png";
 
 function ListTeam01() {
   const [newTask, setNewTask] = useState(false);
@@ -17,7 +20,7 @@ function ListTeam01() {
         <td>
           <button className="edit" onClick={() => setEditTask(true)}>
             <img
-              src="https://cdn-icons-png.flaticon.com/128/1827/1827933.png"
+              src={editLogo}
               height="40px"
               width="40px"
               alt="editLogo"
@@ -25,7 +28,7 @@ function ListTeam01() {
           </button>
           <button className="delete" onClick={() => setEliminateTask(true)}>
             <img
-              src="https://cdn-icons-png.flaticon.com/128/3405/3405244.png"
+              src={deleteLogo}
               height="40px"
               width="40px"
               alt="deleteLogo"
@@ -97,7 +100,7 @@ function ListTeam01() {
               {" "}
               <img
                 className="addButton"
-                src="https://cdn-icons-png.flaticon.com/128/1237/1237946.png"
+                src={addLogo}
                 height="43"
                 width="40px"
                 alt="addLogo"
