@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./ListTeam.scss";
 import AddTask from "./AddTask/AddTask";
-import Button from "./AddTask/UI/Button";
-import WindowAlert from "./AddTask/UI/WindowAlert";
+import WindowAlert from "../RemoveConfirm/RemoveConfirm";
 
 function ListTeam01() {
   const [newTask, setNewTask] = useState(false);
@@ -20,6 +19,7 @@ function ListTeam01() {
               src="https://cdn-icons-png.flaticon.com/128/1827/1827933.png"
               height="40"
               width="40px"
+              alt="editLogo"
             />
           </button>
           <button className="delete">
@@ -27,6 +27,7 @@ function ListTeam01() {
               src="https://cdn-icons-png.flaticon.com/128/3405/3405244.png"
               height="40"
               width="40px"
+              alt="deleteLogo"
             />
           </button>
         </td>
@@ -53,6 +54,7 @@ function ListTeam01() {
   const discardHandler_onEdit = () => {
     setEditTask(false);
   };
+
   return (
     <table>
       {newTask && (
@@ -91,6 +93,7 @@ function ListTeam01() {
                 src="https://cdn-icons-png.flaticon.com/128/1237/1237946.png"
                 height="43"
                 width="40px"
+                alt="addLogo"
               />
             </button>
           </th>

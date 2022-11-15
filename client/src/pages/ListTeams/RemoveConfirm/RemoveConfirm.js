@@ -1,7 +1,7 @@
 import React from 'react'
-import Button from './Button'
-import Card from './Card'
-import './WindowAlert.css'
+import Button from '../ListTeam01/UI/Button'
+import Card from '../ListTeam01/UI/Card'
+import './RemoveConfirm.css'
 
 function WindowAlert(props) {
   return (

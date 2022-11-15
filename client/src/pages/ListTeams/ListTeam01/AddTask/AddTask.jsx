@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Button from './UI/Button'
-import Card from './UI/Card'
+import Button from '../UI/Button'
+import Card from '../UI/Card'
 import './AddTask.scss'
 import alertLogo from '../../../../assets/images/alertLogo.jpg';
 
