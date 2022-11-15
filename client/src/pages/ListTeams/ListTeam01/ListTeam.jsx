@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./ListTeam.scss";
 import AddTask from "./AddTask/AddTask";
-import WindowAlert from "../RemoveConfirm/RemoveConfirm";
+import RemoveConfirm from "../RemoveConfirm/RemoveConfirm";
 
 function ListTeam01() {
   const [newTask, setNewTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
+  const [eliminateTask, setEliminateTask] = useState(false);
 
   const rows = [];
   for (let index = 0; index < 10; index++) {
@@ -22,7 +23,7 @@ function ListTeam01() {
               alt="editLogo"
             />
           </button>
-          <button className="delete">
+          <button className="delete" onClick={() => setEliminateTask(true)}>
             <img
               src="https://cdn-icons-png.flaticon.com/128/3405/3405244.png"
               height="40"
@@ -55,6 +56,12 @@ function ListTeam01() {
     setEditTask(false);
   };
 
+  const deleteHandler = () => {
+    console.log("Delete Pressed");
+    //put delete method here
+    setEliminateTask(false);
+  }
+
   return (
     <table>
       {newTask && (
@@ -74,6 +81,14 @@ function ListTeam01() {
           onSave={saveHandler_onEdit}
           onDiscard={discardHandler_onEdit}
         ></AddTask>
+      )}
+      {eliminateTask && (
+        <RemoveConfirm
+          title = 'Confirm Delete'
+          message = 'The following Task will be deleted:'
+          onDelete = {deleteHandler}
+          onCancel = {() => {setEliminateTask(false)}}
+        ></RemoveConfirm>
       )}
       <thead>
         <tr>

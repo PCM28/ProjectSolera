@@ -3,10 +3,10 @@ import Button from '../ListTeam01/UI/Button'
 import Card from '../ListTeam01/UI/Card'
 import './RemoveConfirm.css'
 
-function WindowAlert(props) {
+function RemoveConfirm(props) {
   return (
     <div>
-        <div className="backdrop" onClick={props.onConfirm}></div>
+        <div className="backdrop"></div>
         <Card className="modal">
             <header className="header">
                 <h2>{props.title}</h2>
@@ -15,11 +15,12 @@ function WindowAlert(props) {
                 <p>{props.message}</p>
             </div>
             <footer className="actions">
-                <Button onClick={props.onConfirm}>Okay</Button>
+                <Button onClick={props.onDelete}>Delete</Button>
+                <Button onClick={props.onCancel}>Cancel</Button>
             </footer>
         </Card>
     </div>
   )
 }
 
-export default WindowAlert;
+export default RemoveConfirm;
