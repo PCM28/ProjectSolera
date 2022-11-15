@@ -1,45 +1,32 @@
 import React from 'react'
 import './ListTeam.scss'
-import { useParams } from "react-router-dom"
 function ListTeam01() {
-  const params = useParams();
+  const rows=[];
+  for (let index = 0; index < 10; index++) {
+    rows.push(<tr>
+    <td>Trabajo en equipo 1</td>
+    <td>0 puntos</td>
+    <td><button className='edit'><img src="https://cdn-icons-png.flaticon.com/128/1827/1827933.png" height="40" width="40px"/></button><button className='delete'><img src="https://cdn-icons-png.flaticon.com/128/3405/3405244.png" height="40" width="40px"/></button></td>
+</tr>);
+    
+  }
   return (
-    <div className='mainContainer'>
-      <div className='title'>
-        <h1>TEAM{params.id}</h1>
-      </div>
-      <div className='list'>{/*  Aquí irá el CRUD (BACK-END)*/}
-        <div className='left'>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-          <h3>Trabajo en equipo {params.id}</h3>
-        </div>
-        <div className='right'>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-          <h3>0 puntos</h3>
-        </div>
-      </div>
-    </div>
+    <table>
+      <thead>
+        <tr>
+            <th className='title'>TEAM1</th>
+            <th className='title'>10 puntos total</th>
+            <th><button className='add' type='button'> <img className='addButton' src="https://cdn-icons-png.flaticon.com/128/1237/1237946.png" height="43" width="40px"/></button></th>
+        </tr>
+      </thead>
+      <tbody>
+          {rows}
+      </tbody>
+      
+
+    </table>
   )
 }
+      
 
 export default ListTeam01
