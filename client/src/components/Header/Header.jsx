@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Header() {
   return (
     <div className='Head'>
-        <h1>SOLERA TEAMS. BOOTCAMP 4</h1>
+        <h1 className='mainTitle'>SOLERA TEAMS. BOOTCAMP 4</h1>
         <Link to="/"><img src={homeButton} alt="img" srcSet="" /></Link>
     </div>
   )
