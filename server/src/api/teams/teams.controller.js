@@ -1,62 +1,62 @@
 const { restart } = require("nodemon");
-const Activity = require("./activities.model");
+const Team = require("./teams.model");
 
-const getAllActivities = async (req, res, next) => {
+const getAllTeams = async (req, res, next) => {
   try {
-    const allActivities = await Activity.find();
-    return res.status(200).json(allActivities);
+    const allTeams = await Team.find().populate("activities");
+    return res.status(200).json(allTeams);
   } catch (error) {
     return next(error);
   }
 };
 
-const getActivity = async (req, res, next) => {
+const getTeam = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const activity = await Activity.findById(id);
-    if (activity) return res.status(200).json(activity);
-    else return res.status(404).json("Actividad no encontrado");
+    const team = await Team.findById(id).populate("activities");
+    if (team) return res.status(200).json(team);
+    else return res.status(404).json("Team no encontrado");
   } catch (error) {
     return next(error);
   }
 };
 
-const postActivity = async (req, res, next) => {
+const postTeam = async (req, res, next) => {
   try {
-    const newActivity = new Activity(req.body);
-    const createActivity = await newActivity.save();
-    return res.status(201).json(createActivity);
+    const newTeam = new Team(req.body);
+    const createTeam = await newTeam.save();
+    return res.status(201).json(createTeam);
   } catch (error) {
     return next(error);
   }
 };
 
-const putActivity = async (req, res, next) => {
+const putTeam = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const activity = new Activity(req.body);
-    activity._id = id;
-    const updateActivity = await Activity.findByIdAndUpdate(id); //Before: findByIdAndDelete(id), now: findByIdAndUpdate(id)
-    return next(updateActivity);
+    const team = new Team(req.body);
+    team._id = id;
+    const updateTeam = await Team.findByIdAndUpdate(id, team); //Before: findByIdAndDelete(id), now: findByIdAndUpdate(id)
+    return next(updateTeam);
   } catch (error) {
     return next(error);
   }
 };
 
-const deleteActivity = async (req, res, next) => {
+const deleteTeam = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const activityDb = await Activity.findByIdAndDelete(id); //Before: findByIdAndDelete(id), now: findByIdAndUpdate(id)
-    return res.status(200).json(activityDb);
+    const teamDb = await Team.findByIdAndDelete(id); //Before: findByIdAndDelete(id), now: findByIdAndUpdate(id)
+    return res.status(200).json(teamDb);
   } catch (error) {
     return next(error);
   }
 };
 
 module.exports = {
-  getAllActivities,
-  getActivity,
-  postActivity,
-  putActivity,
-  deleteActivity,
+  getAllTeams,
+  getTeam,
+  postTeam,
+  putTeam,
+  deleteTeam,
 };

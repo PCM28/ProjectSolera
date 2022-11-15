@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const activitySchema = new Schema(
+const teamSchema = new Schema(
   {
     name: { type: String, required: true },
-    point: { type: Number, required: true },
+    activities: [{ type: Schema.Types.ObjectId, ref: "Activity" }], //Esto la el populate
   },
   {
     timestamps: true,
   }
 );
 
-const Activity = mongoose.model("Activity", activitySchema);
-module.exports = Activity;
+const Team = mongoose.model("Team", teamSchema);
+module.exports = Team;
