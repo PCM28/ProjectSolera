@@ -7,7 +7,7 @@ function Header() {
     <div className='Head'>
         <h1>SOLERA TEAMS. BOOTCAMP 4</h1>
         <Link to="/"><img src={homeButton} alt="img" srcSet="" /></Link>
-      </div>
+    </div>
   )
 }
 
