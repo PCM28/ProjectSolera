@@ -18,7 +18,7 @@ function ListTeam01() {
           <button className="edit" onClick={() => setEditTask(true)}>
             <img
               src="https://cdn-icons-png.flaticon.com/128/1827/1827933.png"
-              height="40"
+              height="40px"
               width="40px"
               alt="editLogo"
             />
@@ -26,7 +26,7 @@ function ListTeam01() {
           <button className="delete" onClick={() => setEliminateTask(true)}>
             <img
               src="https://cdn-icons-png.flaticon.com/128/3405/3405244.png"
-              height="40"
+              height="40px"
               width="40px"
               alt="deleteLogo"
             />
