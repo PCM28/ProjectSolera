@@ -41,20 +41,12 @@ function ListTeam01() {
     //put save method here
     setNewTask(false);
   }
-
-  const discardHandler_onAdd = () => {
-    setNewTask(false);
-  };
-
+  
   function saveHandler_onEdit(returnValue) {
     console.log("Save Pressed");
     //put save method here
     setEditTask(false);
   }
-
-  const discardHandler_onEdit = () => {
-    setEditTask(false);
-  };
 
   const deleteHandler = () => {
     console.log("Delete Pressed");
@@ -70,7 +62,7 @@ function ListTeam01() {
           taskName=""
           points=""
           onSave={saveHandler_onAdd}
-          onDiscard={discardHandler_onAdd}
+          onDiscard={() => {setNewTask(false)}}
         ></AddTask>
       )}
       {editTask && (
@@ -79,7 +71,7 @@ function ListTeam01() {
           taskName=""
           points=""
           onSave={saveHandler_onEdit}
-          onDiscard={discardHandler_onEdit}
+          onDiscard={() => {setEditTask(false)}}
         ></AddTask>
       )}
       {eliminateTask && (
