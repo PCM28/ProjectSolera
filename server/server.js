@@ -4,7 +4,7 @@ const cors = require('cors');
 const db = require('./src/utils/database/database');
 const activitiesRoutes = require('./src/api/activities/activities.routes')
 dotenv.config();
-db.connectDB();
+db.connectDb();
 
 const app = express();
 app.use(express.json());
@@ -24,17 +24,16 @@ app.use(cors({
 
 const PORT = process.env.PORT || 8000;
 
-// app.listen(PORT, ()=>{
-//     console.log(`el servidor está reaaaady mann en http://localhost:${PORT}`);
+app.use('/', activitiesRoutes);// IMPORTANTEAhora si pones en insomnia http://localhost:5000/new (en post) te va a dejar subir, si hubieras puesto '/user', pues para haer POST sería en insomnia http://localhost:5000/user/new
+
+//---------Esto es la general------------
+app.use('*',(req, res, next)=>{
+    return res.status(404).json("Ruta no encontrada");
+});
+// app.get('/', (req, res)=>{
+//     res.end('Welcome to the server boss... running...');
 // })
-
-app.get('/', (req, res)=>{
-    res.end('Welcome to the server boss... running...');
-})
-
-app.use('/Activity', activitiesRoutes);
-
 app.listen(PORT,()=>{
-    console.log(`db: ${process.env.DB_URL}`);
+    // console.log(`db: ${process.env.DB_URL}`);
     console.log(`El servidor está reaaaady mann en http://localhost:${PORT}`);
 })
