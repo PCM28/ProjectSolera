@@ -13,6 +13,7 @@ function RemoveConfirm(props) {
             </header>
             <div className="content">
                 <p>{props.message}</p>
+                <p>{props.taskName}</p>
             </div>
             <footer className="actions">
                 <Button onClick={props.onDelete}>Delete</Button>
