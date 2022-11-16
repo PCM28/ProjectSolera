@@ -13,10 +13,48 @@ function Home() {
   let color = "";
   let progress;
   const [teams, setTeams] = React.useState(null);
+  let teamPoints = [];
+  let draw = true;
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
-      setTeams(response.data);
+      const arrayTeams = response.data;
+      let points;
+      
+      arrayTeams.forEach(team => {
+        //console.log(team)
+        //console.log("=>" + team.activities[0].point)
+        points = 0;
+        for(let i = 0; i < team.activities.length; i++) {
+          points += team.activities[i].point;
+        };
+        teamPoints.push(points);
+      });
+      teamPoints.reverse();
+      if (response.data != undefined) {
+        if (teamPoints[0] !== teamPoints[1])
+          draw = false;
+        //console.log(draw);
+        if (!draw)
+          arrayTeams.forEach(team => {
+            //console.log("=>" + team.activities[0].point)
+            points = 0;
+            for(let i = 0; i < team.activities.length; i++) {
+              points += team.activities[i].point;
+            };
+            teamPoints.push(points);
+          });
+      }
+      arrayTeams.forEach(team => {
+        points = 0;
+            for(let i = 0; i < team.activities.length; i++) {
+              points += team.activities[i].point;
+            };
+            if (points == teamPoints[0]) {
+              team.name = <span className="leader">{team.name}</span>;
+            }
+      });
+      setTeams(arrayTeams);
     });
   }, []);
 
