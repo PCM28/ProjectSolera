@@ -11,10 +11,12 @@ function NotFound() {
       audio.play();
       isPlayed = true;
     }
+    else
+      audio.pause();
   };
 
   return (
-    <div onMouseEnter={PlaySound}>
+    <div onClick={PlaySound}>
       <div className='image'></div>
       <div className='notFound'>
         <h1>Not Found</h1>
