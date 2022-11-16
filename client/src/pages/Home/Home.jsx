@@ -7,8 +7,8 @@ import logo from "../../assets/images/trophy.png";
 import "./Home.scss";
 function Home() {
   // Master
-  let propsvalue = 15;
-  let propsmaxValue = 75;
+  let propsvalue = 0;
+  let propsmaxValue = 0;
   const baseURL = "http://localhost:5000/team";
   let color = "";
   let progress;
@@ -37,8 +37,9 @@ function Home() {
     }
     progress = (propsvalue / propsmaxValue) * 100;
     if (progress < 33) color = "red";
+    else if (propsvalue == 0) color = "red";
     else if (progress < 66) color = "orange";
-    else color = "green";
+    else if (progress > 66) color = "green";
     cards.push(
       <Link to={link} className="linkTeamCard">
         <div className="cardPosition">
