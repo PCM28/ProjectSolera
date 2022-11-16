@@ -1,59 +1,82 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import 'react-circular-progressbar/dist/styles.css';
-import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
-import logo from '../../assets/images/trophy.png';
-import './Home.scss'
+import React from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import "react-circular-progressbar/dist/styles.css";
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
+import logo from "../../assets/images/trophy.png";
+import "./Home.scss";
 function Home() {
   // Master
-  const propsvalue = 15;
-  const propsmaxValue = 75;
-  const progress = propsvalue / propsmaxValue * 100;
-  let color = '';
-  if (progress < 33) color = 'red';
-  else if (progress < 66) color = 'orange';
-  else color = 'green';
-  
-  const nTeams = 10;
-  const cards=[];
-  for (let i = 1; i <= nTeams; i++) {
-      let link = `/listTeam/${i}`
-      cards.push(
+  let propsvalue = 15;
+  let propsmaxValue = 75;
+  const baseURL = "http://localhost:5000/team";
+  let color = "";
+  let progress;
+  const [teams, setTeams] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setTeams(response.data);
+    });
+  }, []);
+
+  if (!teams) return null;
+  console.log(teams);
+  const nTeams = teams.length;
+  const cards = [];
+  for (let i = 0; i < nTeams; i++) {
+    let link = `/listTeam/${i}`;
+    propsvalue = 0;
+    if (teams[i].activities.length !== 0) {
+      teams[i].activities.forEach((element) => {
+        propsvalue += element.point;
+      });
+      propsmaxValue = teams[i].activities.length * 15;
+    } else {
+      propsvalue = 0;
+      propsmaxValue = teams[i].activities.length * 15;
+    }
+    progress = (propsvalue / propsmaxValue) * 100;
+    if (progress < 33) color = "red";
+    else if (progress < 66) color = "orange";
+    else color = "green";
+    cards.push(
       <Link to={link} className="linkTeamCard">
-      <div className='cardPosition'>     
-        <h3 className='teamName'>Team {i}</h3>
-        {/* Development */}
-        <div className="circular">
-          <CircularProgressbarWithChildren
+        <div className="cardPosition">
+          <h3 className="teamName">Team {i}</h3>
+          {/* Development */}
+          <div className="circular">
+            <CircularProgressbarWithChildren
               value={propsvalue}
               maxValue={propsmaxValue}
               styles={{
-                  path: {
-                      stroke: `${color}`,
-                      strokeLinecap: 'round',
-                  },
-                  trail: {
-                      stroke: '#d6d6d6'
-                  },
-              }}>
-              <img style={{ width: 30, marginTop: -5 }} src={logo} alt="trophy" className='trophy'/>
+                path: {
+                  stroke: `${color}`,
+                  strokeLinecap: "round",
+                },
+                trail: {
+                  stroke: "#d6d6d6",
+                },
+              }}
+            >
+              <img
+                style={{ width: 30, marginTop: -5 }}
+                src={logo}
+                alt="trophy"
+                className="trophy"
+              />
               <div style={{ fontSize: 18, marginTop: -5 }} className="words">
-                  <strong>{`${propsvalue}/${propsmaxValue}`}</strong>
+                <strong>{`${propsvalue}/${propsmaxValue}`}</strong>
               </div>
-          </CircularProgressbarWithChildren>
+            </CircularProgressbarWithChildren>
+          </div>
+          {/* Development */}
         </div>
-        {/* Development */}
-      </div>
       </Link>
-    );  
+    );
   }
-  
 
-  return (
-    <div className='MainContainer'>
-      {cards}
-    </div>
-  )
+  return <div className="MainContainer">{cards}</div>;
 }
 
-export default Home
+export default Home;

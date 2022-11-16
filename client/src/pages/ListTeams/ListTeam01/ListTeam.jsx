@@ -10,7 +10,6 @@ function ListTeam01() {
   const [newTask, setNewTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
   const [eliminateTask, setEliminateTask] = useState(false);
-
   const rows = [];
   for (let index = 0; index < 10; index++) {
     rows.push(
