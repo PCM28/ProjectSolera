@@ -16,7 +16,7 @@ function ListTeam() {
   let points = 0;
   const audio = new Audio(sound);
 
-  const baseURL = "http://localhost:5000/team";
+  const baseURL = "http://localhost:5000/teams";
   const teamNumber = window.location.href.split("/")[4] - 1;
 
   useEffect(() => {

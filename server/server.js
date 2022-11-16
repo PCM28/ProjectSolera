@@ -27,12 +27,18 @@ app.use(
 
 const PORT = process.env.PORT || 8000;
 
-app.use("/activity", activitiesRoutes); // IMPORTANTEAhora si pones en insomnia http://localhost:5000/new (en post) te va a dejar subir, si hubieras puesto '/user', pues para haer POST sería en insomnia http://localhost:5000/user/new
-app.use("/team", teamsRoutes); // IMPORTANTEAhora si pones en insomnia http://localhost:5000/new (en post) te va a dejar subir, si hubieras puesto '/user', pues para haer POST sería en insomnia http://localhost:5000/user/new
+app.use("/activities", activitiesRoutes); // IMPORTANTEAhora si pones en insomnia http://localhost:5000/new (en post) te va a dejar subir, si hubieras puesto '/user', pues para haer POST sería en insomnia http://localhost:5000/user/new
+app.use("/teams", teamsRoutes); // IMPORTANTEAhora si pones en insomnia http://localhost:5000/new (en post) te va a dejar subir, si hubieras puesto '/user', pues para haer POST sería en insomnia http://localhost:5000/user/new
 
 //---------Esto es la general------------
 app.use("*", (req, res, next) => {
   return res.status(404).json("Ruta no encontrada");
+});
+
+app.use((error, req, res, next) => {
+  return res
+    .status(error.status || 500)
+    .json(error.status || "Error inesperado");
 });
 
 app.listen(PORT, () => {

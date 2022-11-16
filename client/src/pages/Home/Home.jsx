@@ -10,14 +10,54 @@ function Home() {
   // Master
   let propsvalue = 0;
   let propsmaxValue = 0;
-  const baseURL = "http://localhost:5000/team";
+  const baseURL = "http://localhost:5000/teams";
   let color = "";
   let progress;
   const [teams, setTeams] = React.useState(null);
+  let teamPoints = [];
+  let draw = true;
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
-      setTeams(response.data);
+      const arrayTeams = response.data;
+      let points;
+      
+      arrayTeams.forEach(team => {
+        //console.log(team)
+        //console.log("=>" + team.activities[0].point)
+        points = 0;
+        for(let i = 0; i < team.activities.length; i++) {
+          points += team.activities[i].point;
+        };
+        teamPoints.push(points);
+      });
+      const sortNum = ( a, b ) => a - b;
+      teamPoints.sort(sortNum).reverse();
+      if (response.data != undefined) {
+        if (teamPoints[0] !== teamPoints[1])
+          draw = false;
+        //console.log(draw);
+        // if (!draw)     // This is for, if we want to and in case of draw, no one have a different style
+        // {}             // Put in this case all the loops of below inside the curly brackets
+        arrayTeams.forEach(team => {
+          //console.log("=>" + team.activities[0].point)
+          points = 0;
+          for(let i = 0; i < team.activities.length; i++) {
+            points += team.activities[i].point;
+          };
+          teamPoints.push(points);
+        });
+        arrayTeams.forEach(team => {
+          points = 0;
+              for(let i = 0; i < team.activities.length; i++) {
+                points += team.activities[i].point;
+              };
+              if (points == teamPoints[0]) {
+                team.name = <span className="leader">{team.name}</span>;
+              }
+        });
+      } 
+      setTeams(arrayTeams);
     });
   }, []);
 
@@ -38,8 +78,9 @@ function Home() {
     }
     progress = (propsvalue / propsmaxValue) * 100;
     if (progress < 33) color = "red";
+    else if (propsvalue == 0) color = "red";
     else if (progress < 66) color = "orange";
-    else color = "green";
+    else if (progress > 66) color = "green";
     cards.push(
       <Link to={link} className="linkTeamCard">
         <div className="cardPosition">
