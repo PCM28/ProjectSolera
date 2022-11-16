@@ -41,7 +41,7 @@ function ListTeam01() {
     //put save method here
     setNewTask(false);
   }
-  
+
   function saveHandler_onEdit(returnValue) {
     console.log("Save Pressed");
     //put save method here
@@ -52,7 +52,7 @@ function ListTeam01() {
     console.log("Delete Pressed");
     //put delete method here
     setEliminateTask(false);
-  }
+  };
 
   return (
     <table>
@@ -62,7 +62,9 @@ function ListTeam01() {
           taskName=""
           points=""
           onSave={saveHandler_onAdd}
-          onDiscard={() => {setNewTask(false)}}
+          onDiscard={() => {
+            setNewTask(false);
+          }}
         ></AddTask>
       )}
       {editTask && (
@@ -71,16 +73,20 @@ function ListTeam01() {
           taskName=""
           points=""
           onSave={saveHandler_onEdit}
-          onDiscard={() => {setEditTask(false)}}
+          onDiscard={() => {
+            setEditTask(false);
+          }}
         ></AddTask>
       )}
       {eliminateTask && (
         <RemoveConfirm
-          title = 'Confirm Delete'
-          message = 'The following Task will be deleted:'
-          taskName = ''
-          onDelete = {deleteHandler}
-          onCancel = {() => {setEliminateTask(false)}}
+          title="Confirm Delete"
+          message="The following Task will be deleted:"
+          taskName=""
+          onDelete={deleteHandler}
+          onCancel={() => {
+            setEliminateTask(false);
+          }}
         ></RemoveConfirm>
       )}
       <thead>
