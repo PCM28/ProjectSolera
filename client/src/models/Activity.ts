@@ -3,11 +3,13 @@ export class Activity {
     private name: string;
     private points: number;
   
-    constructor(id: string, name: string, points: number) {
-      this.id = id;
-      this.name = name;
-      this.points = points;
-    }
+    constructor(json: JSON) {
+      let jsonString = JSON.stringify(json);
+      let jsonArray = JSON.parse(jsonString);
+      this.id = jsonArray.id;
+      this.name = jsonArray.name;
+      this.points = jsonArray.points;
+  }
   
     // Getters
     
@@ -38,5 +40,11 @@ export class Activity {
     addPoints(points: number){
         this.points += points;
     }
+    
+    // toJson
 
+    toJson(): string{
+      let obj = {"id": this.id, "name": this.name, "points": this.points};
+      return JSON.stringify(obj);
+  }
   }
