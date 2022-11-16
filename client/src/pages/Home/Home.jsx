@@ -5,6 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import logo from "../../assets/images/trophy.png";
 import "./Home.scss";
+
 function Home() {
   // Master
   let propsvalue = 15;
