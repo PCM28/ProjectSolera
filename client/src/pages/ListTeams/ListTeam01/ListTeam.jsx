@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import "./ListTeam.scss";
 import AddTask from "./AddTask/AddTask";
 import RemoveConfirm from "../RemoveConfirm/RemoveConfirm";
+import editLogo from "../../../assets/icons/edit-icon/edit96.png";
+import deleteLogo from "../../../assets/icons/delete-icon/del96.png";
+import addLogo from "../../../assets/icons/add-icon/add96.png";
+import sound from '../../../assets/audio/SUIII.mp3';
 
 function ListTeam01() {
   const [newTask, setNewTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
   const [eliminateTask, setEliminateTask] = useState(false);
-
+  const audio = new Audio(sound);
   const rows = [];
+  
   for (let index = 0; index < 10; index++) {
     rows.push(
       <tr>
@@ -17,16 +22,16 @@ function ListTeam01() {
         <td>
           <button className="edit" onClick={() => setEditTask(true)}>
             <img
-              src="https://cdn-icons-png.flaticon.com/128/1827/1827933.png"
-              height="40"
+              src={editLogo}
+              height="40px"
               width="40px"
               alt="editLogo"
             />
           </button>
           <button className="delete" onClick={() => setEliminateTask(true)}>
             <img
-              src="https://cdn-icons-png.flaticon.com/128/3405/3405244.png"
-              height="40"
+              src={deleteLogo}
+              height="40px"
               width="40px"
               alt="deleteLogo"
             />
@@ -38,6 +43,7 @@ function ListTeam01() {
 
   function saveHandler_onAdd(returnValue) {
     console.log("Save Pressed");
+    audio.play();
     //put save method here
     setNewTask(false);
   }
@@ -104,7 +110,7 @@ function ListTeam01() {
               {" "}
               <img
                 className="addButton"
-                src="https://cdn-icons-png.flaticon.com/128/1237/1237946.png"
+                src={addLogo}
                 height="43"
                 width="40px"
                 alt="addLogo"

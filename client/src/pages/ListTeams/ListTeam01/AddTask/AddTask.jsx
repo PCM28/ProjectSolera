@@ -42,9 +42,6 @@ function AddTask(props) {
             return;
         }
         props.onSave();
-        // props.onAddTask(enteredTask, enteredPoints);
-        // setEnteredTask('');
-        // setEnteredPoints('');
     }
 
     return (
