@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./ListTeam.scss";
-import AddTask from "./AddTask/AddTask";
-import RemoveConfirm from "../RemoveConfirm/RemoveConfirm";
-import addLogo from "../../../assets/icons/add-icon/add96.png";
-import sound from "../../../assets/audio/SUIII.mp3";
+import AddEditTask from "./AddEditTask/AddEditTask";
+import RemoveConfirm from "./RemoveConfirm/RemoveConfirm";
+import addLogo from "../../assets/icons/add-icon/add96.png";
+import sound from "../../assets/audio/SUIII.mp3";
 import AxiosGetTaskList from "./AxiosGetTaskList/AxiosGetTaskList";
 import axios from "axios";
 
-function ListTeam01() {
+function ListTeam() {
   const [newTask, setNewTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
   const [eliminateTask, setEliminateTask] = useState(false);
@@ -56,7 +56,7 @@ function ListTeam01() {
   return (
     <table>
       {newTask && (
-        <AddTask
+        <AddEditTask
           action="Add"
           taskName=""
           points=""
@@ -64,10 +64,10 @@ function ListTeam01() {
           onDiscard={() => {
             setNewTask(false);
           }}
-        ></AddTask>
+        ></AddEditTask>
       )}
       {editTask && (
-        <AddTask
+        <AddEditTask
           action="Edit"
           taskName=""
           points=""
@@ -75,7 +75,7 @@ function ListTeam01() {
           onDiscard={() => {
             setEditTask(false);
           }}
-        ></AddTask>
+        ></AddEditTask>
       )}
       {eliminateTask && (
         <RemoveConfirm
@@ -121,4 +121,4 @@ function ListTeam01() {
   );
 }
 
-export default ListTeam01;
+export default ListTeam;

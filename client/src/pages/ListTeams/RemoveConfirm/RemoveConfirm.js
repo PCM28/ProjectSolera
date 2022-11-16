@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from '../ListTeam01/UI/Button'
-import Card from '../ListTeam01/UI/Card'
+import Button from './UI/Button'
+import Card from './UI/Card'
 import './RemoveConfirm.css'
 
 function RemoveConfirm(props) {

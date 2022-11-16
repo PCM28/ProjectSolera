@@ -1,6 +1,6 @@
 import React from "react";
 
-import TableRow from "./TableRow";
+import TableRow from "./TableRow/TableRow";
 
 function AxiosGetTaskList(props) {
   const taskList = [];

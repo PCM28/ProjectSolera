@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Button from "../UI/Button";
-import Card from "../UI/Card";
-import "./AddTask.scss";
-import alertLogo from "../../../../assets/images/alertLogo.jpg";
+import Button from "../RemoveConfirm/UI/Button";
+import Card from "../RemoveConfirm/UI/Card";
+import "./AddEditTask.scss";
+import alertLogo from "../../../assets/images/alertLogo.jpg";
 
-function AddTask(props) {
+function AddEditTask(props) {
   const [enteredTask, setEnteredTask] = useState(props.taskName);
   const [enteredPoints, setEnteredPoints] = useState(props.points);
   const [isTaskValid, setTaskIsValid] = useState(true);
@@ -110,4 +110,4 @@ function AddTask(props) {
   );
 }
 
-export default AddTask;
+export default AddEditTask;
