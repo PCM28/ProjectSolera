@@ -1,4 +1,5 @@
 import { Activity } from "./Activity";
+
 export class Team {
     private id: string;
     private name: string;
@@ -54,4 +55,4 @@ export class Team {
         this.activities.push(activity);
     }
     
-  }
+}

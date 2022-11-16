@@ -82,15 +82,14 @@ tbody tr:hover{
     display: inline;
     justify-items: baseline;
 }
-// .add{
-//     display: flex;
-//     flex-direction: column;
-//     align-content: center;
-//     justify-content: center;
-//     justify-items: center;
-//     align-items: center;
-// }
-
+.addButton{
+    height: 43px; 
+    width: 40px;
+}
+.add{
+    background-color: transparent;
+    border: 0px;
+}
 .list{
     display: inline-flexbox;
     align-items: center;
@@ -127,11 +126,21 @@ tbody tr:hover{
     justify-items: baseline;
 }
 .delete{
+    background-color: transparent;
+    filter: invert(100);
+    border: 0px;
     display:inline-flex;
     justify-items: baseline;
 
 }
+.button{
+    height: 40px;
+    
+}
 .edit{
+    background-color: transparent;
+    filter: invert(100);
+    border: 0px;
     display:inline-flex;
     justify-items: baseline;
 }
