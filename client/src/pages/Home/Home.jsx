@@ -30,30 +30,32 @@ function Home() {
         };
         teamPoints.push(points);
       });
-      teamPoints.reverse();
+      const sortNum = ( a, b ) => a - b;
+      teamPoints.sort(sortNum).reverse();
       if (response.data != undefined) {
         if (teamPoints[0] !== teamPoints[1])
           draw = false;
         //console.log(draw);
-        if (!draw)
-          arrayTeams.forEach(team => {
-            //console.log("=>" + team.activities[0].point)
-            points = 0;
-            for(let i = 0; i < team.activities.length; i++) {
-              points += team.activities[i].point;
-            };
-            teamPoints.push(points);
-          });
-      }
-      arrayTeams.forEach(team => {
-        points = 0;
-            for(let i = 0; i < team.activities.length; i++) {
-              points += team.activities[i].point;
-            };
-            if (points == teamPoints[0]) {
-              team.name = <span className="leader">{team.name}</span>;
-            }
-      });
+        // if (!draw)     // This is for, if we want to and in case of draw, no one have a different style
+        // {}             // Put in this case all the loops of below inside the curly brackets
+        arrayTeams.forEach(team => {
+          //console.log("=>" + team.activities[0].point)
+          points = 0;
+          for(let i = 0; i < team.activities.length; i++) {
+            points += team.activities[i].point;
+          };
+          teamPoints.push(points);
+        });
+        arrayTeams.forEach(team => {
+          points = 0;
+              for(let i = 0; i < team.activities.length; i++) {
+                points += team.activities[i].point;
+              };
+              if (points == teamPoints[0]) {
+                team.name = <span className="leader">{team.name}</span>;
+              }
+        });
+      } 
       setTeams(arrayTeams);
     });
   }, []);
