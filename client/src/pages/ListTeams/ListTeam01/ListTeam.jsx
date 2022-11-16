@@ -12,8 +12,8 @@ function ListTeam01() {
   const [editTask, setEditTask] = useState(false);
   const [eliminateTask, setEliminateTask] = useState(false);
   const audio = new Audio(sound);
-
   const rows = [];
+  
   for (let index = 0; index < 10; index++) {
     rows.push(
       <tr>
