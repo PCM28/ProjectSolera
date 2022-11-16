@@ -21,7 +21,6 @@ function Home() {
   }, []);
 
   if (!teams) return null;
-  console.log(teams);
   const nTeams = teams.length;
   const cards = [];
   for (let i = 0; i < nTeams; i++) {
@@ -43,7 +42,7 @@ function Home() {
     cards.push(
       <Link to={link} className="linkTeamCard">
         <div className="cardPosition">
-          <h3 className="teamName">Team {i}</h3>
+          <h3 className="teamName">{teams[i].name}</h3>
           {/* Development */}
           <div className="circular">
             <CircularProgressbarWithChildren
