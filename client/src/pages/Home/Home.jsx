@@ -5,6 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import logo from "../../assets/images/trophy.png";
 import "./Home.scss";
+
 function Home() {
   // Master
   let propsvalue = 0;
@@ -64,7 +65,7 @@ function Home() {
   const nTeams = teams.length;
   const cards = [];
   for (let i = 0; i < nTeams; i++) {
-    let link = `/listTeam/${i}`;
+    let link = `/listTeam/${i + 1}`;
     propsvalue = 0;
     if (teams[i].activities.length !== 0) {
       teams[i].activities.forEach((element) => {

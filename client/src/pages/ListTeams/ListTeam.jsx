@@ -1,44 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ListTeam.scss";
-import AddTask from "./AddTask/AddTask";
-import RemoveConfirm from "../RemoveConfirm/RemoveConfirm";
-import editLogo from "../../../assets/icons/edit-icon/edit96.png";
-import deleteLogo from "../../../assets/icons/delete-icon/del96.png";
-import addLogo from "../../../assets/icons/add-icon/add96.png";
-import sound from '../../../assets/audio/SUIII.mp3';
+import AddEditTask from "./AddEditTask/AddEditTask";
+import RemoveConfirm from "./RemoveConfirm/RemoveConfirm";
+import addLogo from "../../assets/icons/add-icon/add96.png";
+import sound from "../../assets/audio/SUIII.mp3";
+import AxiosGetTaskList from "./AxiosGetTaskList/AxiosGetTaskList";
+import axios from "axios";
 
-function ListTeam01() {
+function ListTeam() {
   const [newTask, setNewTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
   const [eliminateTask, setEliminateTask] = useState(false);
+  const [teams, setTeams] = useState(null);
+
+  let points = 0;
   const audio = new Audio(sound);
-  const rows = [];
-  
-  for (let index = 0; index < 10; index++) {
-    rows.push(
-      <tr>
-        <td>Trabajo en equipo 1</td>
-        <td>0 puntos</td>
-        <td>
-          <button className="edit" onClick={() => setEditTask(true)}>
-            <img
-              src={editLogo}
-              height="40px"
-              width="40px"
-              alt="editLogo"
-            />
-          </button>
-          <button className="delete" onClick={() => setEliminateTask(true)}>
-            <img
-              src={deleteLogo}
-              height="40px"
-              width="40px"
-              alt="deleteLogo"
-            />
-          </button>
-        </td>
-      </tr>
-    );
+
+  const baseURL = "http://localhost:5000/team";
+  const teamNumber = window.location.href.split("/")[4] - 1;
+
+  useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setTeams(response.data[teamNumber]);
+    });
+  }, []);
+  if (!teams) return null;
+
+  if (teams.activities.length !== 0) {
+    teams.activities.forEach((element) => {
+      points += element.point;
+    });
+  } else {
+    points = 0;
   }
 
   function saveHandler_onAdd(returnValue) {
@@ -63,7 +56,7 @@ function ListTeam01() {
   return (
     <table>
       {newTask && (
-        <AddTask
+        <AddEditTask
           action="Add"
           taskName=""
           points=""
@@ -71,10 +64,10 @@ function ListTeam01() {
           onDiscard={() => {
             setNewTask(false);
           }}
-        ></AddTask>
+        ></AddEditTask>
       )}
       {editTask && (
-        <AddTask
+        <AddEditTask
           action="Edit"
           taskName=""
           points=""
@@ -82,7 +75,7 @@ function ListTeam01() {
           onDiscard={() => {
             setEditTask(false);
           }}
-        ></AddTask>
+        ></AddEditTask>
       )}
       {eliminateTask && (
         <RemoveConfirm
@@ -98,9 +91,9 @@ function ListTeam01() {
       <thead>
         <tr>
           <th className="title" id="left">
-            TEAM1
+            {teams.name}
           </th>
-          <th className="title">10 puntos total</th>
+          <th className="title">Total pts: {points}</th>
           <th id="right">
             <button
               className="add"
@@ -119,9 +112,13 @@ function ListTeam01() {
           </th>
         </tr>
       </thead>
-      <tbody>{rows}</tbody>
+      <AxiosGetTaskList
+        team={teams}
+        onClickSave={() => setEditTask(true)}
+        onClickDelete={() => setEliminateTask(true)}
+      ></AxiosGetTaskList>
     </table>
   );
 }
 
-export default ListTeam01;
+export default ListTeam;
