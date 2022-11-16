@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../UI/Button";
 import "./TableRow.scss";
 import editLogo from "../../../../assets/icons/edit-icon/edit96.png";
 import deleteLogo from "../../../../assets/icons/delete-icon/del96.png";
