@@ -43,7 +43,7 @@ function AddTask(props) {
       setPointIsValid(false);
       return;
     }
-    props.onSave();
+    props.onSave(enteredTask, enteredPoints);
   };
 
   return (

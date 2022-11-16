@@ -6,6 +6,7 @@ import editLogo from '../../../assets/icons/edit-icon/edit96.png';
 import deleteLogo from '../../../assets/icons/delete-icon/del96.png';
 import addLogo from '../../../assets/icons/add-icon/add96.png';
 import sound from '../../../assets/audio/SUIII.mp3';
+import AxiosPushTaskList from './AxiosFuntions/AxiosPushTaskList';
 
 function ListTeam01() {
   const [newTask, setNewTask] = useState(false);
@@ -47,11 +48,14 @@ function ListTeam01() {
     );
   }
 
-  function saveHandler_onAdd(returnValue) {
+  function saveHandler_onAdd(props) {
     console.log('Save Pressed');
     audio.play();
     //put save method here
-
+    <AxiosPushTaskList
+      task={props.enteredTask}
+      points={props.enteredPoints}
+    ></AxiosPushTaskList>;
     setNewTask(false);
   }
 
