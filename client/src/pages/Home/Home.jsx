@@ -10,7 +10,7 @@ function Home() {
   // Master
   let propsvalue = 0;
   let propsmaxValue = 0;
-  const baseURL = "http://localhost:5000/team";
+  const baseURL = "http://localhost:5000/teams";
   let color = "";
   let progress;
   const [teams, setTeams] = React.useState(null);
