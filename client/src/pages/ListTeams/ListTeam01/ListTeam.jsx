@@ -78,6 +78,7 @@ function ListTeam01() {
         <RemoveConfirm
           title = 'Confirm Delete'
           message = 'The following Task will be deleted:'
+          taskName = ''
           onDelete = {deleteHandler}
           onCancel = {() => {setEliminateTask(false)}}
         ></RemoveConfirm>
