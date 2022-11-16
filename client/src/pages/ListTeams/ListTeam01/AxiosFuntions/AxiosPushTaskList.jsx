@@ -14,22 +14,5 @@ const AxiosPushTaskList = (props) => {
   });
 
   return;
-  //(
-  // <div className="cartelera">
-  //   <h1>{films[0].title}</h1>
-  //   {films.map((film) => {
-  //     //films && , antes de films.map
-  //     return (
-  //       <div className="movie">
-  //         <h1>{film.title}</h1>
-  //         <img
-  //           width="100px"
-  //           src={film.image}
-  //         />
-  //       </div>
-  //     );
-  //   })}
-  // </div>
-  // );
 };
 export default AxiosPushTaskList;
