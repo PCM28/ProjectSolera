@@ -19,13 +19,23 @@ th:nth-child(3){
     width: 20%;
 }
 th{
-    background-color: #fff;
+    background-color: rgb(223, 221, 221);
     align-content: center;
     justify-content: center;
     justify-items: center;
     align-items: center;
     color: #310863;
 }
+
+#left {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#right {
+    border-radius: 0px 10px 10px 0px;
+}
+
+
 thead, tbody tr {
     display: table;
     width: 100%;
@@ -72,16 +82,13 @@ tbody tr:hover{
     display: inline;
     justify-items: baseline;
 }
-// .add{
-//     display: flex;
-//     flex-direction: column;
-//     align-content: center;
-//     justify-content: center;
-//     justify-items: center;
-//     align-items: center;
-// }
 .addButton{
-    
+    height: 43px; 
+    width: 40px;
+}
+.add{
+    background-color: transparent;
+    border: 0px;
 }
 .list{
     display: inline-flexbox;
@@ -119,11 +126,21 @@ tbody tr:hover{
     justify-items: baseline;
 }
 .delete{
+    background-color: transparent;
+    filter: invert(100);
+    border: 0px;
     display:inline-flex;
     justify-items: baseline;
 
 }
+.button{
+    height: 40px;
+    
+}
 .edit{
+    background-color: transparent;
+    filter: invert(100);
+    border: 0px;
     display:inline-flex;
     justify-items: baseline;
 }
@@ -139,11 +156,11 @@ tbody tr:hover{
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: wheat; 
+    background: rgb(223, 221, 221); 
     border-radius: 10px;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(154, 139, 112); 
+    background: rgb(185, 185, 185); 
   }
