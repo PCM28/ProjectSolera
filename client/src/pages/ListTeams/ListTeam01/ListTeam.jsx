@@ -5,12 +5,15 @@ import RemoveConfirm from "../RemoveConfirm/RemoveConfirm";
 import editLogo from "../../../assets/icons/edit-icon/edit96.png";
 import deleteLogo from "../../../assets/icons/delete-icon/del96.png";
 import addLogo from "../../../assets/icons/add-icon/add96.png";
+import sound from '../../../assets/audio/SUIII.mp3';
 
 function ListTeam01() {
   const [newTask, setNewTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
   const [eliminateTask, setEliminateTask] = useState(false);
+  const audio = new Audio(sound);
   const rows = [];
+  
   for (let index = 0; index < 10; index++) {
     rows.push(
       <tr>
@@ -40,6 +43,7 @@ function ListTeam01() {
 
   function saveHandler_onAdd(returnValue) {
     console.log("Save Pressed");
+    audio.play();
     //put save method here
     setNewTask(false);
   }
