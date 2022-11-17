@@ -43,7 +43,8 @@ function AddEditTask(props) {
 
   const addTaskHandler = (event) => {
     event.preventDefault();
-    
+    const activity_filtered= activities.filter(element => (element.name === enteredTask)) 
+    console.log(activity_filtered)
     if (
       enteredTask.trim().length === 0 &&
       (enteredPoints.trim().length === 0 || +enteredPoints < 0)
@@ -60,7 +61,7 @@ function AddEditTask(props) {
       setPointIsValid(false);
       setTaskIsValid(false);
       return;
-    } else if (activities.filter(element => (element.name === enteredTask) !== null)){
+    } else if (activity_filtered.length!==0){
       setTaskIsValid(false);
       setTaskRepeated(false);
       return;
