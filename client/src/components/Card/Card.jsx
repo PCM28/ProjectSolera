@@ -2,7 +2,6 @@ import "react-circular-progressbar/dist/styles.css";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import logo from "../../assets/images/trophy.png";
 import { Link } from "react-router-dom";
-import "./Card.scss";
 import React from 'react'
 
 function Card(props) {

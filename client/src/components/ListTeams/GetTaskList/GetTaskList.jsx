@@ -2,7 +2,7 @@ import React from "react";
 
 import TableRow from "./TableRow/TableRow";
 
-function AxiosGetTaskList(props) {
+function GetTaskList(props) {
   const taskList = [];
   props.team.activities.forEach((element) => {
     taskList.push(element);
@@ -25,4 +25,4 @@ function AxiosGetTaskList(props) {
   return <tbody>{rows}</tbody>;
 }
 
-export default AxiosGetTaskList;
+export default GetTaskList;
