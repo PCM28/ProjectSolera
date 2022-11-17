@@ -43,7 +43,7 @@ function AddEditTask(props) {
       setPointIsValid(false);
       return;
     }
-    props.onSave(enteredTask, enteredPoints);
+    props.onSave(enteredTask, enteredPoints, props.teamId);
   };
 
   return (
