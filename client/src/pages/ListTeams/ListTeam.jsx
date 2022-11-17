@@ -6,7 +6,6 @@ import sound from "../../assets/audio/SUIII.mp3";
 import AddEditTask from "./AddEditTask/AddEditTask";
 import AxiosGetTaskList from "./AxiosGetTaskList/AxiosGetTaskList";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 
 function ListTeam() {
   const [newTask, setNewTask] = useState(false);
