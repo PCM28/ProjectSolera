@@ -4,7 +4,7 @@ import "./ListTeam.scss";
 import addLogo from "../../assets/icons/add-icon/add96.png";
 import sound from "../../assets/audio/SUIII.mp3";
 import AddEditTask from "./AddEditTask/AddEditTask";
-import AxiosGetTaskList from "./AxiosGetTaskList/AxiosGetTaskList";
+import GetTaskList from "./GetTaskList/GetTaskList";
 import axios from "axios";
 
 function ListTeam() {
@@ -93,7 +93,7 @@ function ListTeam() {
           </th>
         </tr>
       </thead>
-      <AxiosGetTaskList team={teams}></AxiosGetTaskList>
+      <GetTaskList team={teams} />
     </table>
   );
 }
