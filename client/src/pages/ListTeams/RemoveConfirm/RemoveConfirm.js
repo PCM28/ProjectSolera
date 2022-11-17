@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from '../ListTeam01/UI/Button'
-import Card from '../ListTeam01/UI/Card'
+import Button from './UI/Button'
+import Card from './UI/Card'
 import './RemoveConfirm.css'
 
 function RemoveConfirm(props) {
@@ -13,6 +13,7 @@ function RemoveConfirm(props) {
             </header>
             <div className="content">
                 <p>{props.message}</p>
+                <p>{props.taskName}</p>
             </div>
             <footer className="actions">
                 <Button onClick={props.onDelete}>Delete</Button>

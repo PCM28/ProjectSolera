@@ -3,15 +3,17 @@ import { Activity } from "./Activity";
 export class Team {
     private id: string;
     private name: string;
-    private points: number;
+    private points: number
     private activities: Activity[];
   
-    constructor(id: string, name: string, points: number, activities: Activity[]) {
-      this.id = id;
-      this.name = name;
-      this.points = points;
-      this.activities = activities;
+    constructor(json: JSON) {
+        let jsonString = JSON.stringify(json);
+        let jsonArray = JSON.parse(jsonString);
+        this.id = jsonArray.id;
+        this.name = jsonArray.name;
+        this.activities = jsonArray.activities;
     }
+    
 
     // Getters
 
@@ -23,9 +25,6 @@ export class Team {
       return this.name;
     }
   
-    getPoints(): number {
-      return this.points;
-    }
     
     getActivities(): Activity[]{
         return this.activities;
@@ -37,22 +36,22 @@ export class Team {
         this.name = name;
     }
 
-    setPoints(points: number){
-        this.points = points;
-    }
-
     setActivities(activities: Activity[]){
         this.activities = activities;
     }
 
     // Adders
 
-    addPoints(points: number){
-        this.points += points;
-    }
 
     addActivity(activity: Activity){
         this.activities.push(activity);
+    }
+
+    // toJSON
+
+    toJson(): string{
+        let obj = {"id": this.id, "name": this.name, "activities": this.activities};
+        return JSON.stringify(obj);
     }
     
 }

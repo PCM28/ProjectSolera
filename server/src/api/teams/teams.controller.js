@@ -37,7 +37,7 @@ const putTeam = async (req, res, next) => {
     const team = new Team(req.body);
     team._id = id;
     const updateTeam = await Team.findByIdAndUpdate(id, team); //Before: findByIdAndDelete(id), now: findByIdAndUpdate(id)
-    return next(updateTeam);
+    return res.status(200).json(updateTeam);
   } catch (error) {
     return next(error);
   }

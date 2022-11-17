@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Button from '../UI/Button';
-import Card from '../UI/Card';
-import './AddTask.scss';
-import alertLogo from '../../../../assets/images/alertLogo.jpg';
+import React, { useState } from "react";
+import Button from "../RemoveConfirm/UI/Button";
+import Card from "../RemoveConfirm/UI/Card";
+import "./AddEditTask.scss";
+import alertLogo from "../../../assets/images/alertLogo.jpg";
 
-function AddTask(props) {
+function AddEditTask(props) {
   const [enteredTask, setEnteredTask] = useState(props.taskName);
   const [enteredPoints, setEnteredPoints] = useState(props.points);
   const [isTaskValid, setTaskIsValid] = useState(true);
@@ -43,7 +43,7 @@ function AddTask(props) {
       setPointIsValid(false);
       return;
     }
-    props.onSave(enteredTask, enteredPoints);
+    props.onSave(enteredTask, enteredPoints, props.teamId);
   };
 
   return (
@@ -54,7 +54,7 @@ function AddTask(props) {
           <h2>{props.action} Task</h2>
         </header>
         <form onSubmit={addTaskHandler}>
-          <div className={!isTaskValid ? 'invalid' : 'input'}>
+          <div className={!isTaskValid ? "invalid" : "input"}>
             <label htmlFor="task">Task Name</label>
             <input
               type="text"
@@ -72,10 +72,10 @@ function AddTask(props) {
                 <label htmlFor="alert">Enter a valid Task Name</label>
               </div>
             ) : (
-              ''
+              ""
             )}
           </div>
-          <div className={!isPointValid ? 'invalid' : 'input'}>
+          <div className={!isPointValid ? "invalid" : "input"}>
             <label htmlFor="points">Points</label>
             <input
               type="number"
@@ -93,24 +93,14 @@ function AddTask(props) {
                 <label htmlFor="alert">Enter valid Points</label>
               </div>
             ) : (
-              ''
+              ""
             )}
           </div>
-          <footer
-            className="actions"
-            name="Save"
-          >
-            <Button
-              key="1"
-              type="submit"
-            >
+          <footer className="actions" name="Save">
+            <Button key="1" type="submit">
               Save
             </Button>
-            <Button
-              key="2"
-              type="discard"
-              onClick={props.onDiscard}
-            >
+            <Button key="2" type="discard" onClick={props.onDiscard}>
               Discard
             </Button>
           </footer>
@@ -120,4 +110,4 @@ function AddTask(props) {
   );
 }
 
-export default AddTask;
+export default AddEditTask;
