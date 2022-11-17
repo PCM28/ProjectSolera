@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Button from "../RemoveConfirm/UI/Button";
-import Card from "../RemoveConfirm/UI/Card";
-import "./AddEditTask.scss";
-import alertLogo from "../../../assets/images/alertLogo.jpg";
+import React, { useState } from 'react';
+import Button from '../RemoveConfirm/UI/Button';
+import Card from '../RemoveConfirm/UI/Card';
+import './AddEditTask.scss';
+import alertLogo from '../../../assets/images/alertLogo.jpg';
 
 function AddEditTask(props) {
   const [enteredId, setEnteredId] = useState(props.id);
@@ -55,7 +55,7 @@ function AddEditTask(props) {
           <h2>{props.action} Task</h2>
         </header>
         <form onSubmit={addTaskHandler}>
-          <div className={!isTaskValid ? "invalid" : "input"}>
+          <div className={!isTaskValid ? 'invalid' : 'input'}>
             <label htmlFor="task">Task Name</label>
             <input
               type="text"
@@ -73,17 +73,22 @@ function AddEditTask(props) {
                 <label htmlFor="alert">Enter a valid Task Name</label>
               </div>
             ) : (
-              ""
+              ''
             )}
           </div>
-          <div className={!isPointValid ? "invalid" : "input"}>
+          <div className={!isPointValid ? 'invalid' : 'input'}>
             <label htmlFor="points">Points</label>
-            <input
+            <select
               type="number"
               id="points"
               defaultValue={props.points}
               onChange={pointsChangeHandler}
-            ></input>
+            >
+              <option value={0}>0</option>
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={15}>15</option>
+            </select>
             {!isPointValid ? (
               <div className="alert">
                 <img
@@ -94,14 +99,24 @@ function AddEditTask(props) {
                 <label htmlFor="alert">Enter valid Points</label>
               </div>
             ) : (
-              ""
+              ''
             )}
           </div>
-          <footer className="actions" name="Save">
-            <Button key="1" type="submit">
+          <footer
+            className="actions"
+            name="Save"
+          >
+            <Button
+              key="1"
+              type="submit"
+            >
               Save
             </Button>
-            <Button key="2" type="discard" onClick={props.onDiscard}>
+            <Button
+              key="2"
+              type="discard"
+              onClick={props.onDiscard}
+            >
               Discard
             </Button>
           </footer>
