@@ -11,20 +11,23 @@ function AddEditTask(props) {
   const [isTaskValid, setTaskIsValid] = useState(true);
   const [isPointValid, setPointIsValid] = useState(true);
 
+  //Eddit Method Task
   const taskChangeHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setTaskIsValid(true);
-      setPointIsValid(true);
     }
     setEnteredTask(event.target.value);
   };
 
+  // Eddit Method Points
   const pointsChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setTaskIsValid(true);
-      setPointIsValid(true);
+    const value = event.target.value;
+    if (value.trim().length > 0) {
+      if (value % 5 == 0 && value <= 15) {
+        setPointIsValid(true);
+        setEnteredPoints(event.target.value);
+      }
     }
-    setEnteredPoints(event.target.value);
   };
 
   const addTaskHandler = (event) => {
@@ -41,6 +44,9 @@ function AddEditTask(props) {
       setTaskIsValid(false);
       return;
     } else if (enteredPoints.trim().length === 0 || +enteredPoints < 0) {
+      setPointIsValid(false);
+      return;
+    } else if (enteredPoints % 5 != 0 || enteredPoints > 15) {
       setPointIsValid(false);
       return;
     }
