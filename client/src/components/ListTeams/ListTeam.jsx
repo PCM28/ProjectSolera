@@ -22,12 +22,11 @@ function ListTeam() {
     axios.get(baseURL).then((response) => {
       setTeams(response.data[teamNumber]);
     });
-  }, []);
+  });
 
   if (teams === null) return null;
   if (teams === undefined) return <Navigate to="/404" />;
 
-  console.log(teams);
   if (teams.activities.length !== 0) {
     teams.activities.forEach((element) => {
       points += element.point;
@@ -46,7 +45,7 @@ function ListTeam() {
       axios.get(teamURL).then((response) => {
         const team = response.data;
         team.activities.push(activityID);
-        axios.put(teamURL, team).then((response) => window.location.reload());
+        axios.put(teamURL, team);
       });
     });
     //audio.play();
@@ -61,6 +60,7 @@ function ListTeam() {
           id=""
           action="Add"
           teamId={teams._id}
+          activities={teams.activities}
           taskName=""
           points="0"
           onSave={saveHandler_onAdd}

@@ -3,17 +3,29 @@ import Button from "../RemoveConfirm/UI/Button";
 import Card from "../RemoveConfirm/UI/Card";
 import "./AddEditTask.scss";
 import alertLogo from "../../../assets/images/alertLogo.jpg";
+import axios from "axios";
 
 function AddEditTask(props) {
   const [enteredId, setEnteredId] = useState(props.id);
   const [enteredTask, setEnteredTask] = useState(props.taskName);
   const [enteredPoints, setEnteredPoints] = useState(props.points);
   const [isTaskValid, setTaskIsValid] = useState(true);
+  const [isTaskNameValid, setTaskNameIsValid] = useState(true);
   const [isPointValid, setPointIsValid] = useState(true);
+  const [isTaskRepeated, setTaskRepeated] = useState(true);
+  const [activities, setActivities] = useState(props.activities);
+
 
   const taskChangeHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setTaskIsValid(true);
+      setTaskNameIsValid(true);
+      setTaskRepeated(true);
+      setPointIsValid(true);
+    }else{
+      setTaskIsValid(false);
+      setTaskNameIsValid(false);
+      setTaskRepeated(true);
       setPointIsValid(true);
     }
     setEnteredTask(event.target.value);
@@ -22,6 +34,8 @@ function AddEditTask(props) {
   const pointsChangeHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setTaskIsValid(true);
+      setTaskNameIsValid(true);
+      setTaskRepeated(true);
       setPointIsValid(true);
     }
     setEnteredPoints(event.target.value);
@@ -29,19 +43,26 @@ function AddEditTask(props) {
 
   const addTaskHandler = (event) => {
     event.preventDefault();
-
+    
     if (
       enteredTask.trim().length === 0 &&
       (enteredPoints.trim().length === 0 || +enteredPoints < 0)
     ) {
       setTaskIsValid(false);
+      setTaskNameIsValid(false);
       setPointIsValid(false);
       return;
     } else if (enteredTask.trim().length === 0) {
       setTaskIsValid(false);
+      setTaskNameIsValid(false);
       return;
     } else if (enteredPoints.trim().length === 0 || +enteredPoints < 0) {
       setPointIsValid(false);
+      setTaskIsValid(false);
+      return;
+    } else if (activities.filter(element => (element.name === enteredTask) !== null)){
+      setTaskIsValid(false);
+      setTaskRepeated(false);
       return;
     }
     props.onSave(enteredId, enteredTask, enteredPoints, props.teamId);
@@ -63,7 +84,7 @@ function AddEditTask(props) {
               defaultValue={props.taskName}
               onChange={taskChangeHandler}
             ></input>
-            {!isTaskValid ? (
+            {!isTaskNameValid ? (
               <div className="alert">
                 <img
                   style={{ width: 25, marginTop: -5 }}
@@ -71,6 +92,18 @@ function AddEditTask(props) {
                   alt="alert"
                 />
                 <label htmlFor="alert">Enter a valid Task Name</label>
+              </div>
+            ) : (
+              ""
+            )}
+            {!isTaskRepeated ? (
+              <div className="alert">
+                <img
+                  style={{ width: 25, marginTop: -5 }}
+                  src={alertLogo}
+                  alt="alert"
+                />
+                <label htmlFor="alert">This name is already in use</label>
               </div>
             ) : (
               ""
