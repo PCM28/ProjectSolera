@@ -13,10 +13,11 @@ function AxiosGetTaskList(props) {
   for (let i = 0; i < ntaskList; i++) {
     rows.push(
       <TableRow
+        key={taskList[i]._id}
+        teamId={props.team._id}
+        taskId={taskList[i]._id}
         taskName={taskList[i].name}
         points={taskList[i].point}
-        onClickSave={props.onClickSave}
-        onClickDelete={props.onClickDelete}
       ></TableRow>
     );
   }
