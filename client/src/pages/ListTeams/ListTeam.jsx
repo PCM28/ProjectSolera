@@ -48,7 +48,7 @@ function ListTeam() {
         axios.put(teamURL, team).then((response) => window.location.reload());
       });
     });
-    audio.play();
+    //audio.play();
     //put save method here
     setNewTask(false);
   }

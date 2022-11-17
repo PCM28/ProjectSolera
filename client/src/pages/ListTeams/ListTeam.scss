@@ -33,6 +33,7 @@ th{
 
 #right {
     border-radius: 0px 10px 10px 0px;
+    padding-top: 0.35rem;
 }
 
 
@@ -89,6 +90,10 @@ tbody tr:hover{
 .add{
     background-color: transparent;
     border: 0px;
+    cursor: pointer;
+}
+.add:hover {
+    transform: scale(1.20);
 }
 .list{
     display: inline-flexbox;
