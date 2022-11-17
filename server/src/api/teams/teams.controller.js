@@ -1,4 +1,5 @@
 const { restart } = require("nodemon");
+const Activities = require("./../activities/activities.model");
 const Team = require("./teams.model");
 
 const getAllTeams = async (req, res, next) => {
@@ -35,8 +36,21 @@ const putTeam = async (req, res, next) => {
   try {
     const id = req.params.id;
     const team = new Team(req.body);
-    team._id = id;
+    const allActivities = await Activities.find();
     const updateTeam = await Team.findByIdAndUpdate(id, team); //Before: findByIdAndDelete(id), now: findByIdAndUpdate(id)
+    let activityNames = [];
+    let newActivityName = allActivities[allActivities.length - 1].name;
+    team._id = id;
+
+    //console.log(allActivities[0]);
+    //console.log(updateTeam.activities[0])
+    allActivities.forEach(DBactivities => {
+      updateTeam.activities.forEach(teamActivities => {
+        if (teamActivities.toString() === DBactivities._id.toString()) activityNames.push(DBactivities.name);
+      });
+    });
+    //console.log(activityNames.includes(allActivities[allActivities.length - 1].name));
+    if (activityNames.includes(newActivityName)) await Activities.findByIdAndDelete(allActivities[allActivities.length - 1]._id);
     return res.status(200).json(updateTeam);
   } catch (error) {
     return next(error);
