@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./TableRow.scss";
-import sound from "../../../../assets/audio/SUIII.mp3";
+import axios from "axios";
 import editLogo from "../../../../assets/icons/edit-icon/edit96.png";
 import deleteLogo from "../../../../assets/icons/delete-icon/del96.png";
 import AddEditTask from "../../AddEditTask/AddEditTask";
@@ -9,20 +9,17 @@ import RemoveConfirm from "../../RemoveConfirm/RemoveConfirm";
 function TableRow(props) {
   const [editTask, setEditTask] = useState(false);
   const [eliminateTask, setEliminateTask] = useState(false);
-
-  const audio = new Audio(sound);
+  const activityURL = "http://localhost:5000/activities";
 
   function saveHandler_onEdit(taskId, taskName, taskPoints, teamId) {
+    let activity = { name: taskName, point: taskPoints };
+    const editActivityURL = activityURL + "/" + taskId;
+    axios.put(editActivityURL, activity).then(window.location.reload());
     console.log("Save Pressed");
     //put save method here
     setEditTask(false);
   }
 
-  const deleteHandler = (taskId, taskName, taskPoints, teamId) => {
-    console.log("Delete Pressed");
-    //put delete method here
-    setEliminateTask(false);
-  };
   return (
     <tr>
       {editTask && (
@@ -31,7 +28,7 @@ function TableRow(props) {
           teamId={props.teamId}
           action="Edit"
           taskName={props.taskName}
-          points={props.points}
+          points={props.points.toString()}
           onSave={saveHandler_onEdit}
           onDiscard={() => {
             setEditTask(false);
@@ -43,9 +40,12 @@ function TableRow(props) {
           teamId={props.teamId}
           title="Confirm Delete"
           message="The following Task will be deleted:"
-          id={props.id}
+          id={props.taskId}
           taskName={props.taskName}
-          onDelete={deleteHandler}
+          onDelete={() => {
+            console.log("Deleted saved");
+            setEliminateTask(false);
+          }}
           onCancel={() => {
             console.log("Delete canceled");
             setEliminateTask(false);

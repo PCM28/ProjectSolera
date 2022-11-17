@@ -5,6 +5,7 @@ import "./AddEditTask.scss";
 import alertLogo from "../../../assets/images/alertLogo.jpg";
 
 function AddEditTask(props) {
+  const [enteredId, setEnteredId] = useState(props.id);
   const [enteredTask, setEnteredTask] = useState(props.taskName);
   const [enteredPoints, setEnteredPoints] = useState(props.points);
   const [isTaskValid, setTaskIsValid] = useState(true);
@@ -43,7 +44,7 @@ function AddEditTask(props) {
       setPointIsValid(false);
       return;
     }
-    props.onSave(enteredTask, enteredPoints, props.teamId);
+    props.onSave(enteredId, enteredTask, enteredPoints, props.teamId);
   };
 
   return (
