@@ -1,50 +1,50 @@
 export class Activity {
-    private id: string;
-    private name: string;
-    private points: number;
+    private _id: string;
+    private _name: string;
+    private _points: number;
   
     constructor(json: JSON) {
       let jsonString = JSON.stringify(json);
       let jsonArray = JSON.parse(jsonString);
-      this.id = jsonArray.id;
-      this.name = jsonArray.name;
-      this.points = jsonArray.points;
+      this._id = jsonArray.id;
+      this._name = jsonArray.name;
+      this._points = jsonArray.points;
   }
   
     // Getters
     
-    getId(): string {
-        return this.id;
+    public get id(): string {
+        return this._id;
     }
   
-    getName(): string {
-      return this.name;
+    get name(): string {
+      return this._name;
     }
   
-    getPoints(): number {
-      return this.points;
+    get points(): number {
+      return this._points;
     }
 
     // Setters
 
-    setName(name: string){
-        this.name = name;
+    set name(name: string){
+        this._name = name;
     }
 
-    setPoints(points: number){
-        this.points = points;
+    set points(points: number){
+        this._points = points;
     }
 
     // Adders
 
     addPoints(points: number){
-        this.points += points;
+        this._points += points;
     }
     
     // toJson
 
     toJson(): string{
-      let obj = {"id": this.id, "name": this.name, "points": this.points};
+      let obj = {"id": this._id, "name": this._name, "points": this._points};
       return JSON.stringify(obj);
   }
   }
