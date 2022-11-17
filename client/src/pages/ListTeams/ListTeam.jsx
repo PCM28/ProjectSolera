@@ -10,7 +10,6 @@ import axios from "axios";
 function ListTeam() {
   const [newTask, setNewTask] = useState(false);
   const [teams, setTeams] = useState(null);
-  const [activityDB, setActivityDB] = useState(null);
 
   let points = 0;
   const audio = new Audio(sound);
@@ -28,7 +27,6 @@ function ListTeam() {
   if (teams === undefined) return <Navigate to="/404" />;
 
   console.log(teams);
-  console.log(activityDB);
   if (teams.activities.length !== 0) {
     teams.activities.forEach((element) => {
       points += element.point;
@@ -40,6 +38,7 @@ function ListTeam() {
   function saveHandler_onAdd(TaskId, Taskname, points, id_team) {
     console.log("Save Pressed", Taskname, points, id_team);
     let activity = { name: Taskname, point: points };
+    console.log(activity);
     axios.post(activityURL, activity).then((response) => {
       const activityID = response.data._id;
       const teamURL = baseURL + "/" + id_team;
@@ -49,7 +48,6 @@ function ListTeam() {
         axios.put(teamURL, team).then((response) => window.location.reload());
       });
     });
-    console.log(activityDB);
     audio.play();
     //put save method here
     setNewTask(false);
@@ -59,6 +57,7 @@ function ListTeam() {
     <table>
       {newTask && (
         <AddEditTask
+          id=""
           action="Add"
           teamId={teams._id}
           taskName=""
