@@ -6,6 +6,7 @@ import addLogo from "../../assets/icons/add-icon/add96.png";
 import sound from "../../assets/audio/SUIII.mp3";
 import AxiosGetTaskList from "./AxiosGetTaskList/AxiosGetTaskList";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 function ListTeam() {
   const [newTask, setNewTask] = useState(false);
@@ -25,6 +26,7 @@ function ListTeam() {
     });
   }, []);
   if (!teams) return null;
+  if (teams === undefined) return <Navigate to="/404" />;
 
   if (teams.activities.length !== 0) {
     teams.activities.forEach((element) => {

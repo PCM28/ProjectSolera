@@ -7,6 +7,10 @@
     text-decoration: none;
 }
 
+.linkTeamCard:hover {
+    transform: scale(1.25);
+}
+
 .linkTeamCard{
     display: flex;
     align-items: center;
