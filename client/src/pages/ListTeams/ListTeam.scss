@@ -84,7 +84,8 @@ tbody tr:hover{
     justify-items: baseline;
 }
 .addButton{
-    height: 43px; 
+
+    height: 40px; 
     width: 40px;
 }
 .add{
@@ -92,9 +93,11 @@ tbody tr:hover{
     border: 0px;
     cursor: pointer;
 }
+
 .add:hover {
     transform: scale(1.20);
-}
+  }
+
 .list{
     display: inline-flexbox;
     align-items: center;

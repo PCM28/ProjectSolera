@@ -5,10 +5,11 @@
     display:inline-flex;
     justify-items: baseline;
     cursor: pointer;
-}
+  }
+
 .edit:hover {
     transform: scale(1.25);
-}
+  }
 
 .delete{
     background-color: transparent;
@@ -18,6 +19,7 @@
     justify-items: baseline;
     cursor: pointer;
 }
+
 .delete:hover {
     transform: scale(1.25);
-}
+  }
