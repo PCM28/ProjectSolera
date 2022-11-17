@@ -12,13 +12,13 @@ function TableRow(props) {
 
   const audio = new Audio(sound);
 
-  function saveHandler_onEdit(returnValue) {
+  function saveHandler_onEdit(taskId, taskName, taskPoints, teamId) {
     console.log("Save Pressed");
     //put save method here
     setEditTask(false);
   }
 
-  const deleteHandler = () => {
+  const deleteHandler = (taskId, taskName, taskPoints, teamId) => {
     console.log("Delete Pressed");
     //put delete method here
     setEliminateTask(false);

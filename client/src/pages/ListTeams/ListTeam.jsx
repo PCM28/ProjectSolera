@@ -37,12 +37,18 @@ function ListTeam() {
     points = 0;
   }
 
-  function saveHandler_onAdd(Taskname, points, id_team) {
+  function saveHandler_onAdd(TaskId, Taskname, points, id_team) {
     console.log("Save Pressed", Taskname, points, id_team);
     let activity = { name: Taskname, point: points };
-    axios
-      .post(activityURL, activity)
-      .then((response) => setActivityDB(response.data));
+    axios.post(activityURL, activity).then((response) => {
+      const activityID = response.data._id;
+      const teamURL = baseURL + "/" + id_team;
+      axios.get(teamURL).then((response) => {
+        const team = response.data;
+        team.activities.push(activityID);
+        axios.put(teamURL, team).then((response) => window.location.reload());
+      });
+    });
     console.log(activityDB);
     audio.play();
     //put save method here
