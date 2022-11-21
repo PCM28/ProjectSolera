@@ -1,12 +1,10 @@
 import React from "react";
 
-function AddEditTeam() {
+function AddEditTeam(props) {
   const [enteredId, setEnteredId] = useState(props.id);
   const [enteredTeam, setEnteredTeam] = useState(props.taskName);
   const [isTeamValid, setTeamIsValid] = useState(true);
   const [teamExist, setTeamExist] = useState(false);
-
-  const teams = [];
 
   const teamChangeHandler = (event) => {
     if (event.target.value.trim().length > 0) {
@@ -15,13 +13,13 @@ function AddEditTeam() {
     setEnteredTask(event.target.value);
   };
 
-  const addTaskHandler = (event) => {
+  const addEditTeamHandler = (event) => {
     event.preventDefault();
 
     if (enteredTeam.trim().length === 0) {
       setTaskIsValid(false);
       return;
-    } else if (teams.includes(enteredTeam)) {
+    } else if (props.teams.includes(enteredTeam)) {
       setTeamExist(true);
       return;
     }
@@ -33,9 +31,9 @@ function AddEditTeam() {
       <div className="backdrop"></div>
       <Card className="modal">
         <header className="header">
-          <h2>{props.action} Task</h2>
+          <h2>{props.action} Team</h2>
         </header>
-        <form onSubmit={addTaskHandler}>
+        <form onSubmit={addEditTeamHandler}>
           <div className={!isTaskValid ? "invalid" : "input"}>
             <label htmlFor="task">Task Name</label>
             <input

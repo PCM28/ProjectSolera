@@ -9,7 +9,12 @@ function Body() {
   return (
     <div className="MainContainerBody">
       <Routes>
-        <Route path="/" element={<Home />} exact></Route>
+        <Route path="/" element={<Home editable={false} />} exact></Route>
+        <Route
+          path="/editTeams"
+          element={<Home editable={true} />}
+          exact
+        ></Route>
         {/* <Route path="/listTeam/1" element={<ListTeam01/>} exact></Route> */}
         <Route path="*" element={<NotFound />} exact></Route>
         <Route path="/listTeam/:id" element={<ListTeam />} exact></Route>
