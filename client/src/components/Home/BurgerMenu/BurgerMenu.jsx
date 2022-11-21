@@ -17,33 +17,26 @@ function BurgerMenu() {
     }
   }
 
+  const teams = [
+    "Team 1",
+    "Team 2",
+    "Team 3",
+    "Team 4",
+    "Team 5",
+    "Team 6",
+    "Team 7",
+    "Team 8",
+    "Team 9",
+    "Team 10",
+  ];
+
   {
     // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
     return (
       <div>
         {isOpen && <div className="backdrop"></div>}
         <Menu right className="burger" width={265} onStateChange={isMenuOpen}>
-          <BurgerMenuRow className="menu-item"></BurgerMenuRow>
-
-          {/* <a id="miHome" className="menu-item" href="/">
-          Home
-        </a>
-        <a
-          id="miModify"
-          onClick={this.showSettings}
-          className="menu-item--small"
-          href=""
-        >
-          Modify Teams
-        </a>
-        <a
-          id="miAdd"
-          onClick={this.showSettings}
-          className="menu-item--small"
-          href=""
-        >
-          Add Team
-        </a> */}
+          <BurgerMenuRow className="menu-item" teams={teams}></BurgerMenuRow>
         </Menu>
       </div>
     );

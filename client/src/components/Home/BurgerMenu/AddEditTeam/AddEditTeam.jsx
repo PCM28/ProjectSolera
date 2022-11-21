@@ -1,50 +1,31 @@
-import React, { useState } from "react";
-import Button from "../RemoveConfirm/UI/Button";
-import Card from "../RemoveConfirm/UI/Card";
-import "./AddEditTask.scss";
-import alertLogo from "../../../assets/images/alertLogo.jpg";
+import React from "react";
 
-function AddEditTask(props) {
+function AddEditTeam() {
   const [enteredId, setEnteredId] = useState(props.id);
-  const [enteredTask, setEnteredTask] = useState(props.taskName);
-  const [enteredPoints, setEnteredPoints] = useState(props.points);
-  const [isTaskValid, setTaskIsValid] = useState(true);
-  const [isPointValid, setPointIsValid] = useState(true);
+  const [enteredTeam, setEnteredTeam] = useState(props.taskName);
+  const [isTeamValid, setTeamIsValid] = useState(true);
+  const [teamExist, setTeamExist] = useState(false);
 
-  const taskChangeHandler = (event) => {
+  const teams = [];
+
+  const teamChangeHandler = (event) => {
     if (event.target.value.trim().length > 0) {
-      setTaskIsValid(true);
-      setPointIsValid(true);
+      setTeamIsValid(true);
     }
     setEnteredTask(event.target.value);
-  };
-
-  const pointsChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setTaskIsValid(true);
-      setPointIsValid(true);
-    }
-    setEnteredPoints(event.target.value);
   };
 
   const addTaskHandler = (event) => {
     event.preventDefault();
 
-    if (
-      enteredTask.trim().length === 0 &&
-      (enteredPoints.trim().length === 0 || +enteredPoints < 0)
-    ) {
-      setTaskIsValid(false);
-      setPointIsValid(false);
-      return;
-    } else if (enteredTask.trim().length === 0) {
+    if (enteredTeam.trim().length === 0) {
       setTaskIsValid(false);
       return;
-    } else if (enteredPoints.trim().length === 0 || +enteredPoints < 0) {
-      setPointIsValid(false);
+    } else if (teams.includes(enteredTeam)) {
+      setTeamExist(true);
       return;
     }
-    props.onSave(enteredId, enteredTask, enteredPoints, props.teamId);
+    props.onSave(enteredId, enteredTeam);
   };
 
   return (
@@ -63,7 +44,7 @@ function AddEditTask(props) {
               defaultValue={props.taskName}
               onChange={taskChangeHandler}
             ></input>
-            {!isTaskValid && (
+            {!isTaskValid ? (
               <div className="alert">
                 <img
                   style={{ width: 25, marginTop: -5 }}
@@ -72,6 +53,8 @@ function AddEditTask(props) {
                 />
                 <label htmlFor="alert">Enter a valid Task Name</label>
               </div>
+            ) : (
+              ""
             )}
           </div>
           <div className={!isPointValid ? "invalid" : "input"}>
@@ -109,4 +92,4 @@ function AddEditTask(props) {
   );
 }
 
-export default AddEditTask;
+export default AddEditTeam;
