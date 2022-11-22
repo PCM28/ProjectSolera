@@ -24,13 +24,13 @@ const getActivity = async (req, res, next) => {
 const postActivity = async (req, res, next) => {
   try {
     const newActivity = new Activity(req.body);
-    const createActivity = await newActivity.save();
-    const point = req.params.points;
+    const point = req.body.point;
     if (point % 5 == 0 && point <= 15) {
       return res.status(201).json(createActivity);
     } else {
       return next(error);
     }
+    const createActivity = await newActivity.save();
   } catch (error) {
     return next(error);
   }
@@ -40,10 +40,11 @@ const putActivity = async (req, res, next) => {
   try {
     const { id } = req.params;
     const activity = new Activity(req.body);
-    const point = req.params.points;
+    const point = req.body.point;
+    console.log(req)
     activity._id = id;
-    const updateActivity = await Activity.findByIdAndUpdate(id, activity); //Before: findByIdAndDelete(id), now: findByIdAndUpdate(id)
     if (point % 5 == 0 && point <= 15) {
+      const updateActivity = await Activity.findByIdAndUpdate(id, activity); //Before: findByIdAndDelete(id), now: findByIdAndUpdate(id)
       return res.status(200).json(updateActivity);
     } else {
       return next(error);

@@ -34,7 +34,7 @@ function AddEditTask(props) {
     if (value.trim().length > 0) {
       if (value % 5 === 0 && value <= 15) {
         setPointIsValid(true);
-        setEnteredPoints(event.target.value);
+        setEnteredPoints(value);
       }
     }
   };
@@ -73,8 +73,9 @@ function AddEditTask(props) {
     } else if (enteredPoints % 5 !== 0 || enteredPoints > 15) {
       setPointIsValid(false);
       return;
+    } else if (activity_filtered.length === 0) {
+      props.onSave(props.id, enteredTask, enteredPoints, props.teamId);
     }
-    props.onSave(props.id, enteredTask, enteredPoints, props.teamId);
   };
 
   return (
