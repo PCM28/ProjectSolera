@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import "./ListTeam.scss";
 import addLogo from "../../assets/icons/add-icon/add96.png";
-import sound from "../../assets/audio/SUIII.mp3";
 import AddEditTask from "./AddEditTask/AddEditTask";
-import GetTaskList from "./GetTaskList/GetTaskList";
+import GetTaskListUI from "./GetTaskListUI/GetTaskListUI";
 import axios from "axios";
 
 function ListTeam() {
@@ -12,7 +11,6 @@ function ListTeam() {
   const [teams, setTeams] = useState(null);
 
   let points = 0;
-  const audio = new Audio(sound);
   const POSITION_ID_URL = 4;
   const baseURL = "http://localhost:5000/teams";
   const activityURL = "http://localhost:5000/activities";
@@ -35,22 +33,25 @@ function ListTeam() {
     points = 0;
   }
 
-  function saveHandler_onAdd(TaskId, Taskname, points, id_team) {
-    console.log("Save Pressed", Taskname, points, id_team);
-    let activity = { name: Taskname, point: points };
-    console.log(activity);
+  function putActivity(activityURL, activity, baseURL, id_team) {
     axios.post(activityURL, activity).then((response) => {
       const activityID = response.data._id;
       const teamURL = baseURL + "/" + id_team;
       axios.get(teamURL).then((response) => {
         const team = response.data;
         team.activities.push(activityID);
-        axios.put(teamURL, team);
+        axios.put(teamURL, team).then(setNewTask(false));
       });
     });
+  }
+
+  function saveHandler_onAdd(TaskId, Taskname, points, id_team) {
+    console.log("Save Pressed", Taskname, points, id_team);
+    let activity = { name: Taskname, point: points };
+    console.log(activity);
+    putActivity(activityURL, activity, baseURL, id_team);
     //audio.play();
     //put save method here
-    setNewTask(false);
   }
 
   return (
@@ -93,7 +94,7 @@ function ListTeam() {
           </th>
         </tr>
       </thead>
-      <GetTaskList team={teams} />
+      <GetTaskListUI team={teams} />
     </table>
   );
 }

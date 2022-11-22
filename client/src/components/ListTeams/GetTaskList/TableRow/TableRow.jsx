@@ -1,24 +1,14 @@
-import React, { useState } from "react";
 import "./TableRow.scss";
-import axios from "axios";
 import editLogo from "../../../../assets/icons/edit-icon/edit96.png";
 import deleteLogo from "../../../../assets/icons/delete-icon/del96.png";
 import AddEditTask from "../../AddEditTask/AddEditTask";
 import RemoveConfirm from "../../RemoveConfirm/RemoveConfirm";
 
 function TableRow(props) {
-  const [editTask, setEditTask] = useState(false);
-  const [eliminateTask, setEliminateTask] = useState(false);
-  const activityURL = "http://localhost:5000/activities";
-
-  function saveHandler_onEdit(taskId, taskName, taskPoints, teamId) {
-    let activity = { name: taskName, point: taskPoints };
-    const editActivityURL = activityURL + "/" + taskId;
-    axios.put(editActivityURL, activity).then(window.location.reload());
-    console.log("Save Pressed");
-    //put save method here
-    setEditTask(false);
-  }
+  const editTask = props.editTaskState;
+  const setEditTask = props.functionEditTaskState;
+  const eliminateTask = props.eliminateTaskState;
+  const setEliminateTask = props.functionEliminateTaskState;
 
   return (
     <tr>
@@ -27,9 +17,10 @@ function TableRow(props) {
           id={props.taskId}
           teamId={props.teamId}
           action="Edit"
+          activities={props.activities}
           taskName={props.taskName}
           points={props.points.toString()}
-          onSave={saveHandler_onEdit}
+          onSave={props.saveHandler_onEdit}
           onDiscard={() => {
             setEditTask(false);
           }}
@@ -42,12 +33,8 @@ function TableRow(props) {
           message="The following Task will be deleted:"
           id={props.taskId}
           taskName={props.taskName}
-          onDelete={() => {
-            console.log("Deleted saved");
-            setEliminateTask(false);
-          }}
+          onDelete={props.deleteHandle}
           onCancel={() => {
-            console.log("Delete canceled");
             setEliminateTask(false);
           }}
         ></RemoveConfirm>
