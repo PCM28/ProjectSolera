@@ -12,6 +12,7 @@ function AddEditTask(props) {
   const [isPointValid, setPointIsValid] = useState(true);
   const [isTaskRepeated, setTaskRepeated] = useState(true);
 
+  //Eddit Method Task
   const taskChangeHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setTaskIsValid(true);
@@ -27,14 +28,15 @@ function AddEditTask(props) {
     setEnteredTask(event.target.value);
   };
 
+  // Eddit Method Points
   const pointsChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setTaskIsValid(true);
-      setTaskNameIsValid(true);
-      setTaskRepeated(true);
-      setPointIsValid(true);
+    const value = event.target.value;
+    if (value.trim().length > 0) {
+      if (value % 5 === 0 && value <= 15) {
+        setPointIsValid(true);
+        setEnteredPoints(event.target.value);
+      }
     }
-    setEnteredPoints(event.target.value);
   };
 
   const addTaskHandler = (event) => {
@@ -67,11 +69,9 @@ function AddEditTask(props) {
       return;
     } else if (enteredPoints.trim().length === 0 || +enteredPoints < 0) {
       setPointIsValid(false);
-      setTaskIsValid(false);
       return;
-    } else if (activity_filtered.length !== 0) {
-      setTaskIsValid(false);
-      setTaskRepeated(false);
+    } else if (enteredPoints % 5 !== 0 || enteredPoints > 15) {
+      setPointIsValid(false);
       return;
     }
     props.onSave(props.id, enteredTask, enteredPoints, props.teamId);
@@ -120,12 +120,17 @@ function AddEditTask(props) {
           </div>
           <div className={!isPointValid ? "invalid" : "input"}>
             <label htmlFor="points">Points</label>
-            <input
+            <select
               type="number"
               id="points"
               defaultValue={props.points}
               onChange={pointsChangeHandler}
-            ></input>
+            >
+              <option value={0}>0</option>
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={15}>15</option>
+            </select>
             {!isPointValid ? (
               <div className="alert">
                 <img
