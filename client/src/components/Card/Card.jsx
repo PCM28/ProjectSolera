@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 function Card(props) {
-  console.log("IM IN CARD");
-  console.log(props.editable);
   return (
     <Link
       to={props.link}
