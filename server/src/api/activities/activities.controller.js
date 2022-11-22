@@ -1,5 +1,5 @@
-const { restart } = require("nodemon");
-const Activity = require("./activities.model");
+const { restart } = require('nodemon');
+const Activity = require('./activities.model');
 
 const getAllActivities = async (req, res, next) => {
   try {
@@ -15,7 +15,7 @@ const getActivity = async (req, res, next) => {
     const { id } = req.params;
     const activity = await Activity.findById(id);
     if (activity) return res.status(200).json(activity);
-    else return res.status(404).json("Actividad no encontrado");
+    else return res.status(404).json('Actividad no encontrado');
   } catch (error) {
     return next(error);
   }
@@ -24,8 +24,13 @@ const getActivity = async (req, res, next) => {
 const postActivity = async (req, res, next) => {
   try {
     const newActivity = new Activity(req.body);
+    const point = req.body.point;
+    if (point % 5 == 0 && point <= 15) {
+      return res.status(201).json(createActivity);
+    } else {
+      return next(error);
+    }
     const createActivity = await newActivity.save();
-    return res.status(201).json(createActivity);
   } catch (error) {
     return next(error);
   }
@@ -35,9 +40,15 @@ const putActivity = async (req, res, next) => {
   try {
     const { id } = req.params;
     const activity = new Activity(req.body);
+    const point = req.body.point;
+    console.log(req)
     activity._id = id;
-    const updateActivity = await Activity.findByIdAndUpdate(id, activity); //Before: findByIdAndDelete(id), now: findByIdAndUpdate(id)
-    return res.status(200).json(updateActivity);
+    if (point % 5 == 0 && point <= 15) {
+      const updateActivity = await Activity.findByIdAndUpdate(id, activity); //Before: findByIdAndDelete(id), now: findByIdAndUpdate(id)
+      return res.status(200).json(updateActivity);
+    } else {
+      return next(error);
+    }
   } catch (error) {
     return next(error);
   }
