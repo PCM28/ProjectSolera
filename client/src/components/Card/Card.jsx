@@ -19,12 +19,23 @@ function Card(props) {
     axios.get(link).then((response) => {
       const teamActivities = response.data.activities;
       let newTeam = { name: TeamName, activities: teamActivities};
+      var isNewName = true;
 
-      axios.put(link, newTeam )
-        .then((response) => { window.location.reload(false); })
-        .catch((e) => {console.log(e)});
-  
-      setEditTeam(false);
+      props.teams.forEach(team => {
+        if (team.name == TeamName){
+          isNewName = false;
+        }
+      });
+
+      if (isNewName) {
+        axios.put(link, newTeam )
+          .then((response) => { window.location.reload(false); })
+          .catch((e) => {console.log(e)});
+    
+        setEditTeam(false);
+      }
+      else
+        alert("The name is already in use");
     });
   }
 
