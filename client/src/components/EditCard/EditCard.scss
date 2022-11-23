@@ -16,7 +16,7 @@
   padding: 0 20px;
   margin: 40px;
   // background-color: #fff;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(208, 205, 205, 0.85);
   border-radius: 4px;
   height: 180px;
   width: 90px;
@@ -80,13 +80,14 @@
   opacity: 0.6;
 }
 .editIcon:hover {
-  // background-color: gold;
-  background-color: rgb(225, 225, 225);
+  // background-color: rgba(60, 60, 255, 0.8);
+  transform: scale(1.5);
+  // background-color: rgb(225, 225, 225, 0.5);
 }
 
 .deleteIcon:hover {
-  // background-color: rgb(195, 0, 0);
-  background-color: rgb(225, 225, 225);
+  // background-color: rgb(195, 0, 0, 0.7);
+  transform: scale(1.5);
   // background-color: white;
   // filter: invert(1);
 }
