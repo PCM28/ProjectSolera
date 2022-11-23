@@ -38,7 +38,7 @@ function Card(props) {
         setEditTeam(false);
       }
       else
-        alert("The name is already in use");
+        alert("The name is already in use!");
     });
   }
 
