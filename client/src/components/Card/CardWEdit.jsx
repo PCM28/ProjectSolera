@@ -12,7 +12,12 @@ function CardWEdit(props) {
   const [onHoverCard, setOnHoverCard] = useState(false);
 
   return (
-    <div id="cont">
+    <div
+      id="cont"
+      onMouseLeave={() => {
+        setOnHoverCard(false);
+      }}
+    >
       {editTeam && (
         <EditDeleteTeam
           id=""
@@ -25,9 +30,6 @@ function CardWEdit(props) {
       <Link
         onMouseEnter={() => {
           setOnHoverCard(true);
-        }}
-        onMouseLeave={() => {
-          setOnHoverCard(false);
         }}
         className={
           onHoverCard ? "linkTeamCard-editable-down" : "linkTeamCard-editable"
