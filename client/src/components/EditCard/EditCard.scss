@@ -5,17 +5,9 @@
   justify-content: center;
   flex-wrap: wrap;
   text-decoration: none;
-  display: block;
-  width: 100%;
-  overflow: auto;
-  height: 500px;
 }
 
-.linkTeamCard:hover {
-  transform: scale(1.25);
-}
-
-.linkTeamEditCard {
+.linkAddTeamCard-editable {
   display: flex;
   align-items: center;
   justify-items: center;
@@ -23,58 +15,8 @@
   flex-direction: column;
   padding: 0 20px;
   margin: 40px;
-  background-color: #fff;
-  border-radius: 4px;
-  height: 180px;
-  width: 90px;
-  text-decoration: none;
-
-  .teamName {
-    padding: 0;
-    margin: -4px 0px 20px 0px;
-    border: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; //
-    font-size: 27px;
-    text-decoration: none;
-    color: #310863;
-  }
-  .points {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; //
-    text-decoration: none;
-    color: #310863;
-  }
-}
-
-@keyframes tilt-shaking {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(3deg);
-  }
-  50% {
-    transform: rotate(0eg);
-  }
-  75% {
-    transform: rotate(-3deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.linkTeamEditCard-editable {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 20px;
-  margin: 40px;
-  background-color: #fff;
+  // background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 4px;
   height: 180px;
   width: 90px;
@@ -100,18 +42,13 @@
   }
 }
 
-.linkTeamCard-editable:hover {
-  background-color: rgb(11, 11, 11);
-}
-
-.editCardPosition {
+.cardTeamPosition {
+  display: flex;
   display: flex;
   align-items: center;
   justify-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 0 20px 0;
-  opacity: 0.6;
 }
 // Development
 .circular {
@@ -136,10 +73,14 @@
   //background-color: aqua;
 }
 
-.iconContainer {
-  height: 50%;
-  display: flex;
+.addTeamButton {
+  height: 80px;
+  width: 80px;
+  filter: invert(1);
+  opacity: 0.6;
+}
+
+.iconCard {
   align-items: center;
-  justify-items: center;
-  justify-content: center;
+  width: 100%;
 }

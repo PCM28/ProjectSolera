@@ -1,12 +1,13 @@
-import React from "react";
-import "./CardsList.scss";
-import Card from "../Card/Card";
-import AddCard from "../AddCard/AddCard";
+import React from 'react';
+import './CardsList.scss';
+import Card from '../Card/Card';
+// import AddCard from '../AddCard/AddCard';
+import EditCard from '../EditCard/EditCard';
 
 function CardsList(props) {
   let propsValue = 0;
   let propsMaxValue = 0;
-  let color = "";
+  let color = '';
   let progress;
   let teams = props.teams;
   if (!teams) return null;
@@ -25,10 +26,10 @@ function CardsList(props) {
       propsMaxValue = teams[i].activities.length * 15;
     }
     progress = (propsValue / propsMaxValue) * 100;
-    if (progress < 33) color = "red";
-    else if (propsValue == 0) color = "red";
-    else if (progress < 66) color = "orange";
-    else if (progress > 66) color = "green";
+    if (progress < 33) color = 'red';
+    else if (propsValue == 0) color = 'red';
+    else if (progress < 66) color = 'orange';
+    else if (progress > 66) color = 'green';
     cards.push(
       <Card
         link={link}
@@ -42,7 +43,7 @@ function CardsList(props) {
     );
   }
   if (props.editable) {
-    cards.push(<AddCard></AddCard>);
+    cards.push(<EditCard />);
   }
   return (
     <div className="scroll">
