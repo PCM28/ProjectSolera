@@ -1,13 +1,13 @@
-import React from 'react';
-import './CardsList.scss';
-import Card from '../Card/Card';
-// import AddCard from '../AddCard/AddCard';
-import EditCard from '../EditCard/EditCard';
+import React from "react";
+import "./CardsList.scss";
+import Card from "../Card/Card";
+import AddCard from "../AddCard/AddCard";
+import CardWEdit from "../Card/CardWEdit";
 
 function CardsList(props) {
   let propsValue = 0;
   let propsMaxValue = 0;
-  let color = '';
+  let color = "";
   let progress;
   let teams = props.teams;
   if (!teams) return null;
@@ -26,24 +26,36 @@ function CardsList(props) {
       propsMaxValue = teams[i].activities.length * 15;
     }
     progress = (propsValue / propsMaxValue) * 100;
-    if (progress < 33) color = 'red';
-    else if (propsValue == 0) color = 'red';
-    else if (progress < 66) color = 'orange';
-    else if (progress > 66) color = 'green';
-    cards.push(
-      <Card
-        link={link}
-        color={color}
-        propsValue={propsValue}
-        teams={teams}
-        i={i}
-        propsMaxValue={propsMaxValue}
-        editable={props.editable}
-      ></Card>
-    );
+    if (progress < 33) color = "red";
+    else if (propsValue == 0) color = "red";
+    else if (progress < 66) color = "orange";
+    else if (progress > 66) color = "green";
+    if (!props.editable) {
+      cards.push(
+        <Card
+          link={link}
+          color={color}
+          propsValue={propsValue}
+          teams={teams}
+          i={i}
+          propsMaxValue={propsMaxValue}
+        ></Card>
+      );
+    } else {
+      cards.push(
+        <CardWEdit
+          link={link}
+          color={color}
+          propsValue={propsValue}
+          teams={teams}
+          i={i}
+          propsMaxValue={propsMaxValue}
+        ></CardWEdit>
+      );
+    }
   }
   if (props.editable) {
-    cards.push(<EditCard />);
+    cards.push(<AddCard />);
   }
   return (
     <div className="scroll">

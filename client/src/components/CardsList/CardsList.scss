@@ -28,8 +28,8 @@
     height: 180px;
     width: 90px;
     text-decoration: none;
-    position: absolute;
-    z-index: 10;
+    // position: absolute;
+    // z-index: 10;
     
     .teamName{
         padding: 0;
@@ -73,6 +73,7 @@
     text-decoration: none;
     animation: tilt-shaking 0.5s infinite;
     position: absolute;
+    z-index: 2;
     
     .teamName{
         padding: 0;
