@@ -80,11 +80,15 @@
   opacity: 0.6;
 }
 .editIcon:hover {
-  background-color: gold;
+  // background-color: gold;
+  background-color: rgb(225, 225, 225);
 }
 
 .deleteIcon:hover {
-  background-color: rgb(195, 0, 0);
+  // background-color: rgb(195, 0, 0);
+  background-color: rgb(225, 225, 225);
+  // background-color: white;
+  // filter: invert(1);
 }
 
 .icon {

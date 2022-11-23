@@ -6,15 +6,14 @@ import deleteLogo from '../../assets/icons/delete-icon/del48.png';
 
 function EditCard() {
   return (
-    <Link
-      className="linkEditTeamCard-editable"
-      onClick={() => {
-        // setEditTeam(true);
-      }}
-    >
+    // <Link
+    //   className="linkEditTeamCard-editable"
+    //   onClick={() => {
+    //     // setEditTeam(true);
+    //   }}
+    // >
+    <div className="linkEditTeamCard-editable">
       <div className="cardTeamPosition iconCard">
-        {/* <h3 className="teamName">Add Team</h3> */}
-
         <div className="circular">
           <div className="icon editIcon">
             <img
@@ -36,7 +35,9 @@ function EditCard() {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
+
+    //</Link>
   );
 }
 
