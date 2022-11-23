@@ -7,7 +7,7 @@ import deleteLogo from '../../assets/icons/delete-icon/del48.png';
 function EditCard() {
   return (
     <Link
-      className="linkAddTeamCard-editable"
+      className="linkEditTeamCard-editable"
       onClick={() => {
         // setEditTeam(true);
       }}
@@ -16,20 +16,20 @@ function EditCard() {
         {/* <h3 className="teamName">Add Team</h3> */}
 
         <div className="circular">
-          <div className="editIcon">
+          <div className="icon editIcon">
             <img
               className="editTeamButton"
               src={editLogo}
-              height="43"
+              height="40px"
               width="40px"
               alt="addLogo"
             />
           </div>
-          <div className="deleteIcon">
+          <div className="icon deleteIcon">
             <img
               className="deleteTeamButton"
               src={deleteLogo}
-              height="43"
+              height="40px"
               width="40px"
               alt="addLogo"
             />

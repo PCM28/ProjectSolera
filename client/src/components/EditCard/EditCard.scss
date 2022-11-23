@@ -7,7 +7,7 @@
   text-decoration: none;
 }
 
-.linkAddTeamCard-editable {
+.linkEditTeamCard-editable {
   display: flex;
   align-items: center;
   justify-items: center;
@@ -79,7 +79,23 @@
   filter: invert(1);
   opacity: 0.6;
 }
+.editIcon:hover {
+  background-color: gold;
+}
 
+.deleteIcon:hover {
+  background-color: rgb(195, 0, 0);
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+}
 .iconCard {
   align-items: center;
   width: 100%;
