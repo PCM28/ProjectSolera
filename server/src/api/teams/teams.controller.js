@@ -32,6 +32,7 @@ const postTeam = async (req, res, next) => {
 };
 
 const putTeam = async (req, res, next) => {
+  console.log(req)
   try {
     const id = req.params.id;
     const team = new Team(req.body);

@@ -10,8 +10,8 @@ function Home(props) {
   let teamPoints = [];
   let draw = true;
 
-  console.log("IM IN HOME");
-  console.log(props.editable);
+  //console.log("IM IN HOME");
+  //console.log(props.editable);
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {

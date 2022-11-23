@@ -4,10 +4,29 @@ import logo from "../../assets/images/trophy.png";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import EditDeleteTeam from "../Home/SwitchButton/EditDeleteTeam/EditDeleteTeam";
+import axios from "axios";
 
 function Card(props) {
   const [editTeam, setEditTeam] = useState(false);
   const editable = props.editable;
+  //console.log(props)
+
+  function saveHandler_onEdit(TeamId, TeamName, points, id_team) {
+    const numeroTeam = props.link.slice(-1);
+    const id = props.teams[numeroTeam - 1]._id;
+    const link = "http://localhost:5000/teams/" + id;
+    
+    axios.get(link).then((response) => {
+      const teamActivities = response.data.activities;
+      let newTeam = { name: TeamName, activities: teamActivities};
+
+      axios.put(link, newTeam )
+        .then((response) => { window.location.reload(false); })
+        .catch((e) => {console.log(e)});
+  
+      setEditTeam(false);
+    });
+  }
 
   return (
     <div>
@@ -15,6 +34,7 @@ function Card(props) {
         <EditDeleteTeam
           id=""
           teamName=""
+          onSave={saveHandler_onEdit}
           onDiscard={() => {
             setEditTeam(false);
           }}
