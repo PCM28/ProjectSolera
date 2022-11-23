@@ -6,37 +6,42 @@ import deleteLogo from '../../assets/icons/delete-icon/del48.png';
 
 function EditCard() {
   return (
-    <Link
-      className="linkAddTeamCard-editable"
-      onClick={() => {
-        // setEditTeam(true);
-      }}
-    >
+    // <Link
+    //   className="linkEditTeamCard-editable"
+    //   onClick={() => {
+    //     // setEditTeam(true);
+    //   }}
+    // >
+    <div className="linkEditTeamCard-editable">
       <div className="cardTeamPosition iconCard">
-        {/* <h3 className="teamName">Add Team</h3> */}
-
         <div className="circular">
-          <div className="editIcon">
-            <img
-              className="editTeamButton"
-              src={editLogo}
-              height="43"
-              width="40px"
-              alt="addLogo"
-            />
-          </div>
-          <div className="deleteIcon">
-            <img
-              className="deleteTeamButton"
-              src={deleteLogo}
-              height="43"
-              width="40px"
-              alt="addLogo"
-            />
-          </div>
+          <Link onClick={''}>
+            <div className="icon editIcon">
+              <img
+                className="editTeamButton"
+                src={editLogo}
+                height="40px"
+                width="40px"
+                alt="addLogo"
+              />
+            </div>
+          </Link>
+          <Link onClick={''}>
+            <div className="icon deleteIcon">
+              <img
+                className="deleteTeamButton"
+                src={deleteLogo}
+                height="40px"
+                width="40px"
+                alt="addLogo"
+              />
+            </div>
+          </Link>
         </div>
       </div>
-    </Link>
+    </div>
+
+    //</Link>
   );
 }
 
