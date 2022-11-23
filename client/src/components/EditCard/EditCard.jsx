@@ -15,24 +15,28 @@ function EditCard() {
     <div className="linkEditTeamCard-editable">
       <div className="cardTeamPosition iconCard">
         <div className="circular">
-          <div className="icon editIcon">
-            <img
-              className="editTeamButton"
-              src={editLogo}
-              height="40px"
-              width="40px"
-              alt="addLogo"
-            />
-          </div>
-          <div className="icon deleteIcon">
-            <img
-              className="deleteTeamButton"
-              src={deleteLogo}
-              height="40px"
-              width="40px"
-              alt="addLogo"
-            />
-          </div>
+          <Link onClick={''}>
+            <div className="icon editIcon">
+              <img
+                className="editTeamButton"
+                src={editLogo}
+                height="40px"
+                width="40px"
+                alt="addLogo"
+              />
+            </div>
+          </Link>
+          <Link onClick={''}>
+            <div className="icon deleteIcon">
+              <img
+                className="deleteTeamButton"
+                src={deleteLogo}
+                height="40px"
+                width="40px"
+                alt="addLogo"
+              />
+            </div>
+          </Link>
         </div>
       </div>
     </div>
