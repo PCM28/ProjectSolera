@@ -10,10 +10,29 @@
 
 /*switch styles*/
 
+.main-container {
+    // position: absolute;
+    margin-right: 130px;
+    width: 271.76;
+    height: 84.01;
+}
+
 div.btn-container{
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+    margin-right: 130px;
+    margin-top: 50px;
+    width: 271.76px;
+    height: 124.01px;
+}
+
+div.btn-container-hidden{
+    visibility: hidden;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    margin-right: 130px;
 }
 
 div.btn-container i{
@@ -160,4 +179,20 @@ p.by a{
 
 .white-preview p.by a{
     color: #000;
+}
+
+.info {
+    color: white;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-weight: bold;
+}
+
+#lined {
+    border-color: transparent; 
+    border: none;
+    color: #fff;
+    height: 40px;
+    /* margin-top: 5px; */
+    padding: 0px 16px;
+    margin-bottom: -40px;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import "./CardsList.scss";
 import Card from "../Card/Card";
+import AddCard from "../AddCard/AddCard";
 
 function CardsList(props) {
   let propsValue = 0;
@@ -40,7 +41,14 @@ function CardsList(props) {
       ></Card>
     );
   }
-  return <div className="MainContainer">{cards}</div>;
+  if (props.editable) {
+    cards.push(<AddCard></AddCard>);
+  }
+  return (
+    <div className="scroll">
+      <div className="MainContainer">{cards}</div>;
+    </div>
+  );
 }
 
 export default CardsList;

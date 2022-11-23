@@ -3,17 +3,20 @@
     src: url('../../assets/fonts/MandatoryPlaything.ttf');
 }
 .Head{
-    width: 100%;
+    // width: 100%;
+    width: 1313.72px;
+    height: 124.6px;
     display: flex;
     align-items: center; //comment this for menu
     justify-items: center;
     justify-content: space-between;
     h1{
         color: #fff;
-        margin-right: 500px;
+        // margin-right: 500px;
     }
     img{
         width: 50px;
+        margin-right: 180px;
     }
 }
 .left{
@@ -33,6 +36,9 @@
     font-size: 50px;
     color:#fff;
     font-weight: 1;
+    // margin: 33.5px, 500px, 33.5px 0px;
+    width: 763.73px;
+    height: 57.6px;
 }
 
 audio {

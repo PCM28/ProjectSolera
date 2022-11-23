@@ -5,6 +5,10 @@
     justify-content: center;
     flex-wrap: wrap;
     text-decoration: none;
+    display: block;
+    height: 100%;
+    overflow: auto;
+    height: 500px;
 }
 
 .linkTeamCard:hover {
@@ -86,6 +90,10 @@
     }
 }
 
+.linkTeamCard-editable:hover {
+    background-color: rgb(11, 11, 11);
+}
+
 .cardPosition{
     display: flex;
     display: flex;
@@ -118,3 +126,12 @@
     //background-color: aqua;
 }
 
+// .scroll{
+//     display: inline-flexbox;
+//     align-items: center;
+//     justify-items: center;
+//     justify-content: center;
+//     flex-direction: column;
+//     overflow-y: auto;
+//     padding-top: 100px;
+// }

@@ -3,7 +3,7 @@ import Header from "./pages/Header/Header";
 import Body from "./pages/Body/Body";
 import React, { useState } from "react";
 
-function App(props) {
+function App() {
   return (
     <div className="App">
       <Header className="header"></Header>

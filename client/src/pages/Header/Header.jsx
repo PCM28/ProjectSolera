@@ -7,15 +7,16 @@ import SwitchButton from "../../components/Home/SwitchButton/SwitchButton";
 
 function Header() {
   const [isHome, setIsHome] = useState(true);
+  const POSITION_HOME_URL = 3;
   let currentPage = window.location.href;
 
-  setInterval(function () {
+  setInterval(() => {
     let newPage = window.location.href;
     if (currentPage != newPage) {
       currentPage = newPage;
-      console.log("PAGE CHANGED");
       setIsHome(
-        newPage.slice(-1) == "/" || newPage == "http://localhost:3000/editTeams"
+        newPage.split("/")[POSITION_HOME_URL] === "" ||
+          newPage.split("/")[POSITION_HOME_URL] === "editTeams"
       );
     }
   }, 500);
@@ -24,8 +25,9 @@ function Header() {
     <div className="Head">
       <h1 className="mainTitle">SOLERA TEAMS. BOOTCAMP 4</h1>
       {/* <BurgerMenu></BurgerMenu> */}
-      {isHome && <SwitchButton></SwitchButton>}
-      {!isHome && (
+      {isHome ? (
+        <SwitchButton></SwitchButton>
+      ) : (
         <Link to="/">
           <img src={homeButton} alt="img" srcSet="" />
         </Link>
