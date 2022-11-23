@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import EditDeleteTeam from "../Home/SwitchButton/EditDeleteTeam/EditDeleteTeam";
 import axios from "axios";
+import "./Card.scss";
+import AddCard from "../AddCard/AddCard";
 
 function Card(props) {
   const [editTeam, setEditTeam] = useState(false);
+  const [onHoverCard, setOnHoverCard] = useState(false);
   const editable = props.editable;
   //console.log(props)
 
@@ -40,7 +43,7 @@ function Card(props) {
   }
 
   return (
-    <div>
+    <div id="cont">
       {editTeam && (
         <EditDeleteTeam
           id=""
@@ -52,6 +55,13 @@ function Card(props) {
         />
       )}
       <Link
+        id=""
+        onMouseEnter={() => {
+          setOnHoverCard(true);
+        }}
+        onMouseLeave={() => {
+          setOnHoverCard(false);
+        }}
         to={!editable && props.link}
         className={editable ? "linkTeamCard-editable" : "linkTeamCard"}
         onClick={
@@ -93,6 +103,7 @@ function Card(props) {
           {/* Development */}
         </div>
       </Link>
+      <AddCard></AddCard>
     </div>
   );
 }
